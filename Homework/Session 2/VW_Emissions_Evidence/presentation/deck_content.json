@@ -1,0 +1,370 @@
+{
+  "team": [
+    {
+      "title": "What was measured?",
+      "kind": "compare",
+      "body": [
+        [
+          "Laboratory",
+          "Controlled driving cycle",
+          "A and B: FTP-75 tests at CARB\nSame prescribed speed sequence"
+        ],
+        [
+          "Real roads",
+          "Portable exhaust measurement",
+          "Three vehicles, selected California routes\nTraffic, hills and engine load vary"
+        ]
+      ],
+      "notes": "Building on the claim we have just heard, my section asks how independent measurements tested it.\n\nIn 2014, West Virginia University carried out an emissions study commissioned by the International Council on Clean Transportation. The researchers measured nitrogen oxides, or NOx, a group of air pollutants, in grams per kilometre travelled.\n\nIn the laboratory, a chassis dynamometer, a set of rollers, lets a stationary car follow a prescribed driving cycle. Here that cycle is FTP-75, the standard U.S. laboratory sequence. The study tested Vehicles A and B on it.\n\nOn the road, the researchers used a portable emissions measurement system, or PEMS: equipment carried by the car to measure its exhaust while it moves. Three vehicles drove selected routes, although not every vehicle ran every route.\n\nThe benchmark is the Tier 2 Bin 5 NOx standard: 0.043 grams per kilometre at full useful life. It is a certification standard used as a reference; a road route is not itself the legal test.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, pp. 1, 9–10; Table 3.15 p. 57; Table 4.1 p. 59; p. 64. Standard = 0.07 g/mi (Table 2.2 p. 5).",
+      "seconds": 75,
+      "bottom": "NOx = nitrogen oxides     g/km = grams per kilometre\nU.S. Tier 2 Bin 5 NOx standard: 0.043 g/km at full useful life"
+    },
+    {
+      "title": "What did the data show?",
+      "kind": "chart",
+      "body": [],
+      "notes": "Now look at the chart. Blue is Vehicle A, orange is B, and green is C. These are the report’s anonymous labels; the EPA later identified the two high emitters as a 2012 Jetta and a 2013 Passat, without saying which letter is which. The vertical scale is NOx in grams per kilometre. The dashed red line marks the standard.\n\nAt the left, the study’s laboratory averages are 0.022 for A and 0.016 for B, both below that reference. Vehicle C has no laboratory result here. On the road, A reaches 1.505 grams per kilometre on the rural hill route. Dividing that by 0.043 gives 35 times the standard.\n\nThe report summarises A as about 15 to 35 times the standard and B as about 5 to 20 times, depending on the route. Those ranges compare road emissions with the standard. They are not road-to-laboratory ratios or single observations.\n\nThe green vehicle also matters. Its rural-route average is 0.409, roughly 9.5 times the standard, while its other route means are much lower. It provides useful context, but the vehicles differ, so it is not a controlled experiment. Error bars show the reported standard deviations, meaning variation around the average. Gaps mean no test result, not zero emissions.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, Table 4.3 p. 65; laboratory results p. 64; standard Table 4.1 p. 59. Vehicle identities: EPA, Notice of Violation CAA-09-18-15, 18 September 2015, p. 4.",
+      "seconds": 95
+    },
+    {
+      "title": "What did the discrepancy mean?",
+      "kind": "evidence",
+      "body": [
+        [
+          "2014",
+          "Anomaly",
+          "Independent road measurements\njustified further investigation"
+        ],
+        [
+          "2015",
+          "Mechanism",
+          "EPA described test detection\nand reduced control on the road"
+        ],
+        [
+          "2017",
+          "Admitted conduct",
+          "Volkswagen admitted facts\nabout design and concealment"
+        ]
+      ],
+      "notes": "The road data justified investigation because the gap was large and appeared across several routes. But road data alone did not prove intent, identify software, or show how common the behaviour was.\n\nThat evidence came later. The EPA’s 2015 notice described a “switch”: software that read steering-wheel position, speed, engine run time and barometric pressure to recognise the official test, ran a compliant calibration in the lab, and weakened emissions control on the road. In its 2017 plea agreement, Volkswagen admitted designing that software and concealing it from regulators.\n\nSo the research exposed an anomaly, and later evidence established deliberate manipulation. The line was not crossed in 2014, when the data looked bad. It was crossed years earlier, when the car was engineered to recognise the test. That is where the investigation picks up.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, p. iv, pp. 62–64; EPA, Notice of Violation CAA-09-18-15, 18 September 2015, pp. 3–4; United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), Exh. 2 pp. 12–14, 21–24, ¶¶ 33–36, 54–55, 63.",
+      "seconds": 65,
+      "bottom": "The road data showed the gap. It did not, by itself, prove intent."
+    },
+    {
+      "title": "Primary sources",
+      "kind": "sources",
+      "body": [
+        [
+          "2014 research",
+          "WVU / ICCT report",
+          "15 May 2014\nStudy design: pp. 1, 9–10, 57\nStandard: Table 4.1 p. 59\nResults: p. 64; Table 4.3 p. 65"
+        ],
+        [
+          "2015 regulator findings",
+          "EPA Notice of Violation",
+          "18 September 2015\nSwitch and calibrations: pp. 3–4\nWVU vehicles identified: p. 4"
+        ],
+        [
+          "2017 admissions",
+          "Volkswagen plea agreement",
+          "11 January 2017, Exhibit 2\n¶¶ 30, 33–36, 50–55, 58, 62–64, 72\nPenalties: p. 13"
+        ]
+      ],
+      "notes": "Reference appendix. These sources support different stages of the argument: measured anomaly, regulatory findings, and admitted conduct. WVU page numbers are the report’s printed page numbers (PDF viewer page = printed page + 16 from Chapter 1 on). Plea Exhibit 2 page 2-N is PDF page N + 42. Full URLs and the claim-to-source table are in sources_and_claims.md.",
+      "source": "Complete source details and links are also in the accompanying claim register.",
+      "seconds": 0
+    }
+  ],
+  "standalone": [
+    {
+      "title": "Beyond clever presentation:\nVolkswagen’s emissions test",
+      "kind": "cover",
+      "body": [
+        "Team 5 · When did a company seriously manipulate its data?",
+        "What did VW do to the test?  What was it trying to achieve?  Who paid the price?"
+      ],
+      "notes": "Volkswagen sold diesel cars in the United States as clean and compliant. Our question is when that stopped being flattering presentation and became manipulation of the data itself.\n\nWe will answer three questions: what Volkswagen did to the test, what it was trying to achieve, and who paid the price. Along the way we will show exactly what was measured, how a correct laboratory number became misleading, and how independent road testing exposed it.\n\nOur central source is a 2014 university report. The EPA’s 2015 notice and Volkswagen’s 2017 admitted statement of facts answer questions that this small study could not. I will keep those sources separate, so that no number carries more meaning than its evidence supports.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014; EPA, Notice of Violation CAA-09-18-15, 18 September 2015; United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), ¶ 30.",
+      "seconds": 60
+    },
+    {
+      "title": "The claim and the measurement",
+      "kind": "compare",
+      "body": [
+        [
+          "The claim",
+          "Compliance with U.S. standards",
+          "Vehicles marketed as clean diesel\nCertification supported market access"
+        ],
+        [
+          "The quantity",
+          "NOx mass per distance",
+          "Nitrogen oxides in the exhaust\nMeasured in grams per kilometre"
+        ]
+      ],
+      "notes": "NOx means nitrogen oxides, a group of air pollutants produced during combustion. Grams per kilometre is a mass-per-distance unit: it tells us how much NOx leaves the exhaust for each kilometre travelled. The benchmark in the original report is the U.S. Tier 2 Bin 5 NOx standard, 0.043 grams per kilometre at full useful life. Full useful life is the regulatory durability period. It does not mean the researchers followed each car for its entire lifetime.\n\nThe later admitted facts describe clean-diesel marketing and a strategy to sell vehicles in the U.S. The measurement mattered because buyers and regulators needed to know whether the claimed emissions performance held beyond the conditions used to obtain approval. The study therefore asked a practical question: what did these vehicles emit when researchers took the instruments onto the road?",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, Table 2.2 p. 5 (0.07 g/mi), Table 4.1 p. 59 (0.043 g/km); United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), ¶¶ 28–30, 32 (Exh. 2 pp. 10–12).",
+      "seconds": 70,
+      "bottom": "Reference standard: 0.043 g/km NOx at full useful life"
+    },
+    {
+      "title": "Laboratory and road measurements",
+      "kind": "compare",
+      "body": [
+        [
+          "Laboratory",
+          "Prescribed conditions",
+          "A chassis dynamometer simulates driving\nFTP-75 uses a standard speed sequence"
+        ],
+        [
+          "Road",
+          "Changing conditions",
+          "PEMS measures exhaust on a moving car\nTraffic, gradient and load vary"
+        ]
+      ],
+      "notes": "A chassis dynamometer is a set of rollers that lets a car run through a driving sequence while staying inside a laboratory. FTP-75 is the standardised U.S. driving sequence used for the laboratory averages shown later. The road measurement used PEMS, a portable emissions measurement system. The equipment travelled with the car and measured exhaust gases and flow, alongside information about the journey. Combining pollutant mass with distance gives grams per kilometre.\n\nRoad conditions vary. An uphill stretch can increase engine load. Traffic changes acceleration and stopping. Those differences are legitimate reasons to expect some variation between laboratory and road measurements. A gap therefore needs explanation, rather than an immediate accusation.\n\nThere are two comparisons to keep separate. Comparing a road average with 0.043 asks how it relates to the standard. Comparing it with that same vehicle’s laboratory average asks how much the measured behaviour changed between conditions. The denominators differ, so the ratios differ too.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, pp. 9, 39–55, 59, 64.",
+      "seconds": 75,
+      "bottom": "The standard is a reference for road results; road routes are not certification cycles."
+    },
+    {
+      "title": "Three vehicles, with limited coverage",
+      "kind": "study",
+      "body": [
+        [
+          "A",
+          "2.0 L",
+          "Lean-NOx trap"
+        ],
+        [
+          "B",
+          "2.0 L",
+          "Urea-SCR"
+        ],
+        [
+          "C",
+          "3.0 L",
+          "Urea-SCR"
+        ]
+      ],
+      "notes": "West Virginia University performed the study for the International Council on Clean Transportation; the final report is dated May 15, 2014. The report anonymised the cars as A, B and C. The EPA later identified the two high emitters as a 2012 Volkswagen Jetta and a 2013 Volkswagen Passat, but not which letter is which, so I keep the report’s labels.\n\nVehicle A used a lean-NOx trap, which stores nitrogen oxides and periodically treats them. B and C used urea-based selective catalytic reduction, or SCR, which uses a reagent and a catalyst. All three were road-tested; only A and B were also tested in the laboratory. The five California routes covered highway, city and rural hill driving, with some vehicle-route combinations missing.\n\nThese are three individual vehicles, not a random sample. The report explicitly restricts its conclusions to them. Repeated runs help assess consistency within these cases; they do not turn three cars into a fleet estimate.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, p. iv; pp. 1, 9–10; Table 3.15 p. 57. EPA, Notice of Violation CAA-09-18-15, 18 September 2015, p. 4 (2012 Jetta, 2013 Passat).",
+      "seconds": 75,
+      "bottom": "Road tests: A, B, C     Laboratory tests: A, B\nThree case studies do not estimate fleet-wide prevalence."
+    },
+    {
+      "title": "The measured NOx results",
+      "kind": "chart",
+      "body": [],
+      "notes": "Here is the evidence chart, using the original report’s numbers. The vertical axis is linear and starts at zero. The colours identify Vehicles A, B and C. The red dashed line is 0.043 grams per kilometre, the reference standard.\n\nThe left group contains laboratory FTP-75 averages: 0.022 for A and 0.016 for B. There is no laboratory result for C. The remaining groups are the five road routes. An absent bar means no result for that vehicle and route.\n\nVehicle A’s highway mean is 0.614. Its rural hill mean rises to 1.505, and its San Diego mean is 1.480. B ranges from 0.344 to 0.815 across these five routes. C’s means are much lower on most routes, but its rural hill mean reaches 0.409.\n\nEach bar is an average, not a peak. For example, Vehicle A’s two San Diego runs were 1.24 and 1.72 grams per kilometre; the bar shows their mean, 1.480. The thin error bars are the standard deviations the researchers published. Single runs have no reported deviation. The pattern is large, vehicle-specific and sensitive to route conditions.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, Table 4.3 p. 65; p. 64; Table 4.1 p. 59.",
+      "seconds": 95
+    },
+    {
+      "title": "The denominator changes the meaning",
+      "kind": "ratios",
+      "body": [
+        [
+          "35.0×",
+          "1.505 ÷ 0.043",
+          "Vehicle A, rural road mean\nrelative to the standard"
+        ],
+        [
+          "≈68×",
+          "1.505 ÷ 0.022",
+          "The same road mean relative to\nA’s lab mean (0.022 ± 0.006, two tests)"
+        ]
+      ],
+      "notes": "Let us work through one number. For Vehicle A on the rural hill route, 1.505 divided by 0.043 is 35.0: the road mean relative to the standard. Divide the same 1.505 by A’s own laboratory average of 0.022 and you get about 68: a road-to-laboratory ratio. Same measurement, different denominator, different headline.\n\nThat laboratory average comes from only two tests, 0.022 plus or minus 0.006, so treat 68 as an order of magnitude. The laboratory figure also includes a cold start, while the road runs were warm; the report notes that cold starts usually raise NOx, so this does not inflate the road side.\n\nThe report summarises A at about 15 to 35 times the standard and B at about 5 to 20 times. In this five-route table the means give A 14 to 35 and B 8 to 19. Later documents use other figures: the plea agreement says up to about 40 times for the study vehicles, which matches A’s single highest run, 1.72 divided by 0.043. Always ask which number, divided by what.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, pp. ii–iii (cold start), 62–65; p. 64 (single runs). Plea Agreement, Exhibit 2, ¶ 52 (Exh. 2-21). Ratios are our calculations from published means.",
+      "seconds": 90,
+      "bottom": "Report summary: A ≈15–35×; B ≈5–20× the standard, depending on route"
+    },
+    {
+      "title": "An anomaly still needs testing",
+      "kind": "limits",
+      "body": [
+        [
+          "Measurement",
+          "Check calibration and method agreement"
+        ],
+        [
+          "Operating conditions",
+          "Check route, temperature, load and regeneration"
+        ],
+        [
+          "Inference",
+          "Separate a measured gap from its cause"
+        ]
+      ],
+      "notes": "Before blaming software, a skeptical analyst asks whether the measurement itself could explain the gap. The researchers checked the portable equipment against laboratory equipment on Vehicle B. The agreement was not perfect: Table 3.13 shows an 18.8 percent NOx difference on the weighted FTP-75. But an 18.8 percent method difference cannot produce a 15- or 35-fold gap. It is a scale comparison, not a correction factor.\n\nThe researchers also considered operating explanations: diesel-filter regeneration, the periodic burning-off of trapped soot, as well as control strategy, catalyst sizing and urea dosing. Road load and traffic matter too.\n\nFinally, the dataset is small: missing vehicle-route combinations, few repeats, and a repeat-count inconsistency for C’s rural route between the report’s test matrix and its results table. The right conclusion is a serious anomaly that demands follow-up, not a fleet-wide estimate and not yet proof of intent.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, §3.3.3.3 p. 50 and Table 3.13 p. 55; Table 3.15 p. 57; pp. 62–64; Table 4.3 p. 65; p. iv.",
+      "seconds": 65
+    },
+    {
+      "title": "What VW did to the test",
+      "kind": "software",
+      "lead": "The “switch” read steering position, speed, engine run time and barometric pressure",
+      "body": [
+        [
+          "Official test recognised",
+          "“Dyno calibration”",
+          "Full emissions control:\ncompliant laboratory results"
+        ],
+        [
+          "Normal driving",
+          "“Road calibration”",
+          "SCR / lean-NOx-trap control\nweakened on the road"
+        ]
+      ],
+      "notes": "So what exactly did Volkswagen do to the test? The later investigation supplied the mechanism that the road study could not.\n\nAccording to the EPA notice, software in the engine computer, which the EPA called the “switch”, read inputs such as steering-wheel position, vehicle speed, how long the engine had been running and barometric pressure. Those inputs track the official U.S. test procedure. When the switch recognised the test, the car ran a “dyno calibration” with full emissions control. The rest of the time it ran a “road calibration” that reduced the effectiveness of its exhaust treatment.\n\nVolkswagen’s admitted facts say the software recognised the published drive cycles, and that in 2013 a supervisor approved adding steering-angle recognition, because a car on test rollers does not steer.\n\nSo Volkswagen did not falsify a spreadsheet. It made the measured object change its behaviour when measured. The laboratory reading could be accurate and still misrepresent ordinary driving.",
+      "source": "EPA, Notice of Violation CAA-09-18-15, 18 September 2015, pp. 3–4; United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), ¶ 34 (Exh. 2 pp. 12–13), ¶¶ 49–51 (Exh. 2 pp. 19–20).",
+      "seconds": 75,
+      "bottom": "Summary of EPA NOV pp. 3–4 and plea ¶¶ 34, 49–50; a simplification, not the source code"
+    },
+    {
+      "title": "Where the line was crossed",
+      "kind": "timeline",
+      "body": [
+        ["2006", "Design decision", "Engine could not meet NOx rules and still sell; software built to detect the test", "¶¶ 33–36"],
+        ["2009–15", "Sales", "About 585,000 U.S. vehicles sold with defeat software", "¶ 72"],
+        ["2013", "Refinement", "Steering-angle recognition approved to spot the test", "¶¶ 49–50"],
+        ["2014", "Independent data", "WVU road tests expose the gap; regulators ask why", "¶¶ 52–53; EPA p. 4"],
+        ["2014–15", "Concealment", "False explanations; recall with only limited benefit", "¶¶ 54–58; EPA p. 4"],
+        ["Sept 2015", "Admission", "Defeat device admitted on 3 Sept; EPA notice on 18 Sept", "¶¶ 63–64"]
+      ],
+      "notes": "Where exactly was the line crossed? Not in 2014, when the numbers looked bad, and not in how anyone drew a chart.\n\nAccording to Volkswagen’s admitted facts, around 2006 engineers concluded they could not build a diesel engine that met the stricter U.S. NOx standards and still attracted enough customers. Instead of changing the engine, they built software to detect and defeat the test. When staff objected, a senior supervisor decided to continue and told them, in substance, not to get caught. That is the line: deliberately engineering the product so that the official measurement would not represent normal use.\n\nFrom 2009, about 585,000 U.S. vehicles were sold with defeat software. In 2013 it was refined with steering-angle recognition. After the 2014 study, Volkswagen gave regulators false explanations, such as driving patterns and technical issues, and a recall that the EPA says brought only limited benefit. On 3 September 2015, with its 2016 models awaiting certification, Volkswagen admitted the defeat device. The EPA notice followed on 18 September.\n\nEvery step after 2006 was concealment of a decision already made.",
+      "source": "United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), ¶¶ 33–36 (Exh. 2 pp. 12–14), 49–58 (pp. 19–23), 59, 63–64 (pp. 23–25), 72 (p. 27). EPA, Notice of Violation CAA-09-18-15, 18 September 2015, pp. 1, 4.",
+      "seconds": 85,
+      "bottom": "The line: engineering the product so the official measurement would not represent normal use, then hiding it"
+    },
+    {
+      "title": "What VW wanted, and who paid",
+      "kind": "impact",
+      "body": [
+        [
+          "What VW wanted",
+          "U.S. diesel sales: pass the NOx standard on paper and still attract buyers; later, keep approval for 2016 models"
+        ],
+        [
+          "Volkswagen AG",
+          "Guilty plea to three felonies: $2.8 billion criminal fine + $1.5 billion civil penalties; 3 years’ probation with an independent monitor"
+        ],
+        [
+          "Owners and the public",
+          "≈585,000 U.S. vehicles; owner settlements and a NOx remediation trust credited at $11 billion; extra NOx exposure not quantified in our sources"
+        ]
+      ],
+      "notes": "What was Volkswagen trying to achieve? Its admitted facts give the motive. Selling diesel cars in the United States was an important strategic goal, and engineers could not meet the stricter NOx standards while still attracting enough customers. The software let the cars pass certification without that trade-off. Later, concealment aimed to keep approval for the 2016 models.\n\nWho paid the price? Volkswagen AG pleaded guilty to three felonies: a criminal fine of 2.8 billion dollars and 1.5 billion dollars in civil penalties, plus three years of probation under an independent monitor. The plea also credits 11 billion dollars already committed to owner settlements and a NOx remediation trust.\n\nOwners bought about 585,000 cars marketed as clean diesel that did not meet the standard they were sold on. People near those cars were exposed to extra NOx; none of our sources quantify that health cost, so I will not put a number on it. And regulators spent more than a year receiving false explanations.",
+      "source": "United States v. Volkswagen AG, Plea Agreement, 11 January 2017: offences p. 1; monitor p. 12; civil penalties, $11B credit and $2.8B fine p. 13; probation p. 14. Exhibit 2 (Statement of Facts) ¶¶ 30–33 (Exh. 2 pp. 10–12), 54–55, 59, 61, 72 (p. 27).",
+      "seconds": 75
+    },
+    {
+      "title": "Why this crossed into manipulation",
+      "kind": "ethics",
+      "body": [
+        [
+          "Selective presentation",
+          "Choosing favourable observations\nwhile leaving other observations out"
+        ],
+        [
+          "Documented manipulation",
+          "Changing behaviour when the test is recognised\nand concealing that change from decision-makers"
+        ]
+      ],
+      "notes": "Selective presentation means choosing favourable observations and omitting less favourable ones. It can mislead even when the individual numbers are correct. The documented Volkswagen conduct went further: the vehicle’s behaviour changed when the software recognised the test, and that mechanism was concealed.\n\nThe certification result could be an accurate reading of exhaust under the tested settings. The deception lay in making that conditional result stand for a vehicle whose emissions controls operated differently during ordinary use, while withholding the reason.\n\nThe broader analytics lesson is to distinguish data accuracy from the validity of the conclusion drawn from it. A number can be accurate, yet the process that generates it can make the intended comparison misleading. Independent testing helped expose that weakness, and the later investigation established why it existed.",
+      "source": "Analytical interpretation grounded in United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), Exh. 2 ¶¶ 33–35, 54–55, 63; EPA, Notice of Violation CAA-09-18-15, 18 September 2015, p. 4.",
+      "seconds": 65
+    },
+    {
+      "title": "What a skeptical analyst should check",
+      "kind": "checklist",
+      "body": [
+        [
+          "1",
+          "Meaning",
+          "Unit, averaging method and denominator"
+        ],
+        [
+          "2",
+          "Coverage",
+          "Routes, missing tests and repeat counts"
+        ],
+        [
+          "3",
+          "Independence",
+          "Instrument checks and tests outside the standard cycle"
+        ],
+        [
+          "4",
+          "Causation",
+          "Alternative explanations, software evidence and admissions"
+        ]
+      ],
+      "notes": "A skeptical analyst would start with the meaning of the number. Is it grams per kilometre, a peak, an average, or a ratio? What is the denominator? Our example changed from 35 to 68 simply by changing the comparison.\n\nNext comes coverage. Which vehicles ran which routes? Are missing tests visible? Do repeated measurements establish consistency, and what do they leave uncertain? The chart should expose these limitations instead of quietly replacing missing values with zero.\n\nThen check independence. Validate the instrument, vary realistic operating conditions and investigate whether a system can recognise the standard test. If the gap persists, request an explanation that makes predictions which independent tests can challenge.\n\nFinally, separate causation from the anomaly. Exhaust measurements can show a serious discrepancy. Software evidence, documented decisions and admissions answer the question of deliberate manipulation.\n\nThe conclusion is simple: independent road measurement made the hidden discrepancy visible. It justified further investigation. The later evidence established intent. Keeping those steps distinct gives us a stronger argument, and a more trustworthy way to evaluate the next impressive test result.",
+      "source": "Analytical recommendations based on WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, pp. iv, 55, 57, 59, 64–65, and United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), Exh. 2 ¶¶ 33–35, 54–55, 63.",
+      "seconds": 75
+    },
+    {
+      "title": "Likely audience questions",
+      "kind": "qa",
+      "body": [
+        [
+          "Did the road tests prove cheating?",
+          "They established the anomaly. Later software evidence and admissions established intent."
+        ],
+        [
+          "Why three vehicles?",
+          "Enough to identify cases worth investigating, insufficient to estimate fleet-wide prevalence."
+        ],
+        [
+          "Why use the standard on a road chart?",
+          "It provides a clear reference. The routes are not certification tests, and ratios must name their denominator."
+        ],
+        [
+          "Why do sources say 35×, ~40× or 10–40×?",
+          "Different scopes: route means (WVU), single runs (plea ¶ 52), drive cycles across the fleet (EPA p. 4)."
+        ]
+      ],
+      "notes": "Optional Q&A, outside the planned 15-minute talk.\n\nDid the road tests prove cheating? No. They revealed an anomaly. The later regulatory investigation and admitted facts established the software mechanism and deliberate concealment.\n\nCan three vehicles tell us about all diesels? No. The report explicitly limits its conclusions to the tested vehicles. Repeated routes improve understanding of those cases, not population coverage.\n\nWhy compare road emissions with a laboratory standard? It is a useful reference for scale, provided we state what it is. Each road route is not itself a certification test. A multiple of the standard is different from a direct road-to-laboratory ratio.\n\nWhy do the multiples differ between sources? Our chart shows route means, with a maximum of 35 times the standard. The plea agreement says the study vehicles reached up to about 40 times; A’s single San Diego run of 1.72 grams per kilometre is 40 times 0.043. The plea also says “sometimes 35 times” for the software generally, and the EPA notice says 10 to 40 times depending on the drive cycle. None of these is wrong; each has a different scope.",
+      "source": "WVU/ICCT, In-Use Emissions Testing of Light-Duty Diesel Vehicles in the U.S., 15 May 2014, p. iv, pp. 59, 64–65; EPA, Notice of Violation CAA-09-18-15, 18 September 2015, pp. 3–4; United States v. Volkswagen AG, Plea Agreement, 11 January 2017, Exhibit 2 (Statement of Facts), ¶ 34 (Exh. 2 p. 13), ¶ 52 (p. 21), ¶ 63.",
+      "seconds": 0
+    },
+    {
+      "title": "Primary sources",
+      "kind": "sources",
+      "body": [
+        [
+          "2014 research",
+          "WVU / ICCT report",
+          "15 May 2014\nDesign: pp. 1, 9–10, 50, 55, 57\nStandard: Table 4.1 p. 59\nResults: p. 64; Table 4.3 p. 65"
+        ],
+        [
+          "2015 regulator findings",
+          "EPA Notice of Violation",
+          "18 September 2015\nSwitch and calibrations: pp. 3–4\nAffected models: p. 5"
+        ],
+        [
+          "2017 admissions",
+          "Volkswagen plea agreement",
+          "11 January 2017, Exhibit 2\n¶¶ 30, 33–36, 49–64, 72\nPenalties: pp. 12–14"
+        ]
+      ],
+      "notes": "Reference appendix. These sources support different stages of the argument: measured anomaly, regulatory findings, and admitted conduct. WVU page numbers are the report’s printed page numbers (PDF viewer page = printed page + 16 from Chapter 1 on). Plea Exhibit 2 page 2-N is PDF page N + 42. Full URLs and the claim-to-source table are in sources_and_claims.md.",
+      "source": "Complete source details and links are also in the accompanying claim register.",
+      "seconds": 0
+    }
+  ],
+  "team_intro": "Thanks — that gives us the shape of the Volkswagen case: what the company was accused of, and the scale of the penalty. My part fills in the piece in between: how anyone actually found out something was wrong, before any regulator got involved. I'm going to walk through the independent measurement evidence — a 2014 university road-testing study — and be precise about what it did and didn't prove on its own. Three slides, about three and a half minutes: what was measured, what the data showed, and what that discrepancy did and didn't mean at the time.",
+  "team_outro": "So to sum up my piece: independent road testing found a real, large, repeatable gap between lab and road NOx — enough to justify serious follow-up questions. What it could not do, on its own, is tell you why that gap existed or whether anyone did it on purpose. That's exactly the handoff point — over to the next part of our talk for what the EPA's investigation and Volkswagen's own admissions established once they went looking for the mechanism behind the anomaly.",
+  "standalone_intro": "In September 2015, the EPA accused Volkswagen of installing illegal software in diesel cars to cheat emissions tests. By January 2017, VW had pleaded guilty to three federal felonies and agreed to pay $4.3 billion in criminal and civil penalties, covering about 585,000 affected vehicles in the United States alone — VW has separately acknowledged a much larger number of affected vehicles worldwide, but that global figure is outside the U.S. court documents this talk draws on, so I will stick to the U.S. numbers we can cite precisely. That much is widely known, and it is not where this talk starts.\n\nWhat is less widely known is how the world found out in the first place — and that story does not start with a whistleblower or a regulator's raid. It starts with a small, unglamorous university research project in 2014, whose only job was to measure how much nitrogen oxide came out of three diesel cars' tailpipes on ordinary roads. Nobody involved was looking for fraud. They found a number that did not add up, published it, and went on to their next project. It took EPA and California regulators over a year of follow-up questioning, and VW engineers' own internal admissions, to turn that anomaly into a criminal case.\n\nThis talk follows that evidence trail in order, because the order matters. I am going to show you exactly what was measured, in what units, under what conditions — the raw material. Then I will show you how a single, completely accurate laboratory number became misleading once you asked what it was standing in for. Then I will show you how independent road testing exposed the gap, and only after that, how investigators established that the gap was not an accident but a deliberate design choice. By the end we will have answered three questions directly: what Volkswagen did to the test, what it was trying to achieve by doing it, and who ultimately paid for that decision. I am deliberately keeping the 2014 measurement evidence separate from the 2015–2017 legal findings throughout, because collapsing them together is exactly the kind of shortcut this case should teach us not to take.",
+  "standalone_outro": "So where does this leave us? The measurement side of the story is finished: three vehicles, five routes, one laboratory cycle, and a gap between them that WVU's researchers could describe but not explain. The legal side is also finished, on paper — Volkswagen's guilty plea, its penalties, and its compliance monitor are matters of public record. But two things carry forward from here.\n\nThe first is regulatory, and I will flag it as background rather than a sourced claim, since it sits outside the three documents this talk is built on: real-world, on-road emissions testing — the same PEMS methodology used in the original WVU study — is widely reported to have become part of vehicle certification requirements in major markets in the years that followed, which is exactly the kind of follow-up you would expect once a lab-only cycle had been shown to be gameable. The second thing that carries forward is the analytical habit I want you to leave with, independent of cars or emissions entirely: whenever a system is being measured, ask whether that system can tell it is being measured, and whether its behavior might change as a result. That question applies to a diesel engine's control software exactly as much as it applies to a student being observed in a classroom study, a server being benchmarked, or a model being evaluated on a known test set. VW's engineers exploited a version of that gap deliberately. Most of the time nobody is exploiting it on purpose — but the gap itself is not rare, and a completely accurate reading under test conditions is never, by itself, evidence about ordinary conditions.\n\nThat is the throughline: an anomaly is not an accusation, a benchmark is not the real world, and the difference between selective presentation and outright manipulation is not the accuracy of any single number — it is whether the thing you measured was quietly built to behave differently while you were watching. Thank you.",
+  "urls": {
+    "WVU": "https://theicct.org/wp-content/uploads/2021/06/WVU_LDDV_in-use_ICCT_Report_Final_may2014.pdf",
+    "EPA": "https://www.epa.gov/sites/default/files/2015-10/documents/vw-nov-caa-09-18-15.pdf",
+    "DOJ": "https://www.justice.gov/archives/opa/press-release/file/924436/dl?inline="
+  }
+}

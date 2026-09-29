@@ -1,0 +1,12 @@
+{
+  "name": "vw-emissions-deck",
+  "private": true,
+  "type": "module",
+  "description": "Builds the Team 5 Volkswagen emissions decks from deck_content.json and verified_chart_data.csv",
+  "scripts": {
+    "build": "node build_decks.mjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}

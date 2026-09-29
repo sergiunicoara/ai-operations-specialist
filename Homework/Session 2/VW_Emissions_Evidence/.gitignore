@@ -1,0 +1,11 @@
+node_modules/
+.presentation-build/
+__pycache__/
+.pytest_cache/
+
+# Local presentation renders and video/audio exports
+presentation/*.mp4
+presentation/movie_frames/
+presentation/slide_previews/
+presentation/voiceover_team/
+presentation/voiceover_team_neural/
