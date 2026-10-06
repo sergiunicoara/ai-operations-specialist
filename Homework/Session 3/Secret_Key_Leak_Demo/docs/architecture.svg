@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Segoe UI, Arial, sans-serif">
+  <title>Architecture: browser, Next.js server route, mock API</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0f172a"/></marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b45309"/></marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b91c1c"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="40" y="52" font-size="34" font-weight="700" fill="#0f172a">Where the public value and the private credential live</text>
+  <text x="40" y="86" font-size="20" fill="#475569">Educational demonstration · fake credentials · everything bound to 127.0.0.1</text>
+
+  <!-- Zones -->
+  <rect x="30" y="120" width="470" height="640" rx="18" fill="#fffbeb" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10 6"/>
+  <text x="50" y="156" font-size="22" font-weight="700" fill="#92400e">UNTRUSTED: anything here can be inspected</text>
+  <rect x="560" y="120" width="480" height="640" rx="18" fill="#f1f5f9" stroke="#334155" stroke-width="3"/>
+  <text x="580" y="156" font-size="22" font-weight="700" fill="#0f172a">YOUR SERVER · Next.js 127.0.0.1:3000</text>
+  <rect x="1100" y="120" width="470" height="640" rx="18" fill="#f1f5f9" stroke="#334155" stroke-width="3"/>
+  <text x="1120" y="156" font-size="22" font-weight="700" fill="#0f172a">PROVIDER (mock) · 127.0.0.1:4010</text>
+
+  <!-- Browser -->
+  <rect x="60" y="190" width="410" height="120" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="80" y="226" font-size="24" font-weight="700">Browser (DevTools open)</text>
+  <text x="80" y="258" font-size="19" fill="#475569">Page JavaScript downloaded from</text>
+  <text x="80" y="284" font-size="19" fill="#475569">/_next/static/chunks/*.js</text>
+  <rect x="60" y="340" width="410" height="150" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="3"/>
+  <text x="80" y="374" font-size="22" font-weight="700" fill="#92400e">PUBLIC VALUE (Stage A)</text>
+  <text x="80" y="404" font-size="17" font-family="Consolas, monospace">NEXT_PUBLIC_DEMO_EXPOSED_KEY</text>
+  <text x="80" y="430" font-size="15" font-family="Consolas, monospace">DEMO_ONLY_PUBLIC_VALUE_NOT_</text>
+  <text x="80" y="450" font-size="15" font-family="Consolas, monospace">A_REAL_CREDENTIAL</text>
+  <text x="80" y="478" font-size="17" fill="#92400e">inlined into JS at `next build`</text>
+  <rect x="60" y="520" width="410" height="110" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2.5"/>
+  <text x="80" y="556" font-size="22" font-weight="700" fill="#047857">NO private credential here</text>
+  <text x="80" y="586" font-size="18" fill="#064e3b">Requests to /api/stage-b carry no key;</text>
+  <text x="80" y="610" font-size="18" fill="#064e3b">responses contain only a harmless result.</text>
+
+  <!-- Next server -->
+  <rect x="590" y="190" width="420" height="190" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="610" y="226" font-size="24" font-weight="700">Route handler</text>
+  <text x="610" y="256" font-size="19" font-family="Consolas, monospace">POST /api/stage-b</text>
+  <text x="610" y="288" font-size="18" fill="#475569">server-only module · fixed read-only op</text>
+  <text x="610" y="314" font-size="18" fill="#475569">origin check · rate limit</text>
+  <text x="610" y="340" font-size="18" fill="#475569">returns a safe result object only</text>
+  <rect x="590" y="420" width="420" height="190" rx="12" fill="#fee2e2" stroke="#b91c1c" stroke-width="3"/>
+  <text x="610" y="456" font-size="22" font-weight="700" fill="#991b1b">PRIVATE CREDENTIAL (Stages B, C)</text>
+  <text x="610" y="488" font-size="17" font-family="Consolas, monospace">DEMO_MOCK_API_KEY</text>
+  <text x="610" y="514" font-size="17" fill="#7f1d1d">in .env.local (git-ignored)</text>
+  <text x="610" y="540" font-size="17" fill="#7f1d1d">read at runtime, never in the bundle</text>
+  <text x="610" y="580" font-size="18" font-weight="700" fill="#991b1b">Rotation: edit value, restart server</text>
+
+  <!-- Mock API -->
+  <rect x="1130" y="190" width="410" height="190" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="1150" y="226" font-size="24" font-weight="700">Authenticated tier</text>
+  <text x="1150" y="258" font-size="19" font-family="Consolas, monospace">GET /v1/status</text>
+  <text x="1150" y="290" font-size="18" fill="#475569">header x-demo-api-key checked</text>
+  <text x="1150" y="316" font-size="18" fill="#475569">missing / invalid / revoked → 401</text>
+  <text x="1150" y="342" font-size="18" fill="#475569">read-only scope: purge → 403</text>
+  <rect x="1130" y="420" width="410" height="190" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="1150" y="456" font-size="22" font-weight="700">Provider key state</text>
+  <text x="1150" y="490" font-size="19">Demo key A  → active → <tspan fill="#b91c1c" font-weight="700">revoked</tspan></text>
+  <text x="1150" y="520" font-size="19">Demo key B  → issued at rotation</text>
+  <text x="1150" y="556" font-size="17" fill="#475569">Accepts only the active key.</text>
+  <text x="1150" y="582" font-size="17" fill="#475569">Independent of the app's own config.</text>
+  <rect x="1130" y="640" width="410" height="90" rx="12" fill="#fffbeb" stroke="#b45309" stroke-width="2"/>
+  <text x="1150" y="674" font-size="20" font-weight="700" fill="#92400e">Public tier /v1/public-ping</text>
+  <text x="1150" y="702" font-size="17" fill="#92400e">accepts the browser-delivered value</text>
+
+  <!-- Arrows -->
+  <line x1="470" y1="250" x2="588" y2="250" stroke="#0f172a" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="478" y="236" font-size="16" fill="#0f172a">no key</text>
+  <line x1="1010" y1="270" x2="1128" y2="270" stroke="#b91c1c" stroke-width="4" marker-end="url(#arrRed)"/>
+  <text x="1018" y="256" font-size="16" fill="#b91c1c" font-weight="700">adds key</text>
+  <line x1="1128" y1="354" x2="1012" y2="354" stroke="#0f172a" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+  <text x="1022" y="376" font-size="16" fill="#0f172a">200 / 401</text>
+  <path d="M470 690 H800 V780 H1335 V732" fill="none" stroke="#b45309" stroke-width="4" stroke-dasharray="10 6" marker-end="url(#arrAmber)"/>
+  <text x="500" y="676" font-size="18" fill="#92400e" font-weight="700">Stage A: browser → provider directly,</text>
+  <text x="500" y="800" font-size="18" fill="#92400e" font-weight="700">header x-demo-public-key (visible in Network tab)</text>
+
+  <!-- Legend -->
+  <rect x="40" y="830" width="22" height="22" fill="#fef3c7" stroke="#b45309" stroke-width="2"/><text x="72" y="849" font-size="18">public: shipped to browsers</text>
+  <rect x="380" y="830" width="22" height="22" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/><text x="412" y="849" font-size="18">private: server only</text>
+  <text x="700" y="849" font-size="18" fill="#475569">Hiding the credential does not protect /api/stage-b from misuse: it still needs limits and authentication.</text>
+</svg>

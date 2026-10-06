@@ -1,0 +1,36 @@
+{
+  "name": "secret-key-leak-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Educational demo: what happens when a secret key leaks (fake credentials, local mock API only)",
+  "engines": { "node": ">=20.9.0" },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "mock": "node mock-api/server.mjs",
+    "dev": "next dev -H 127.0.0.1 -p 3000",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 3000",
+    "rotate": "node scripts/rotate.mjs",
+    "use-latest-key": "node scripts/use-latest-key.mjs",
+    "reset": "node scripts/reset.mjs",
+    "scan": "node scripts/scan-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "verify": "node scripts/verify.mjs",
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "diagram": "node scripts/render-diagram.mjs",
+    "backup": "node scripts/build-backup-walkthrough.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "puppeteer-core": "^24.0.0",
+    "typescript": "^5.6.0"
+  }
+}

@@ -1,0 +1,8 @@
+# Real env files never go to Git; only .env.example (fake values) is tracked.
+.env
+.env.local
+.env*.local
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
