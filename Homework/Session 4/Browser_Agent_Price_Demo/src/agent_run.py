@@ -178,7 +178,7 @@ async def _run_segment(cfg: dict, run_dir: Path, headless: bool = False, max_ste
     history = None
     try:
         history = await asyncio.wait_for(agent.run(max_steps=max_steps), timeout=time_limit + 60)
-    except Exception as e:  # keep the partial log
+    except BaseException as e:  # keep the partial log, also on Ctrl+C or cancellation
         error = redact(f"{type(e).__name__}: {e}")
     finally:
         wd.cancel()

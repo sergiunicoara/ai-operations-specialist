@@ -1,0 +1,82 @@
+{
+  "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_150823_fallback",
+  "agent": {
+    "meta": {
+      "task": "fallback",
+      "title": "Fallback: find and compare three books on a scraping practice site",
+      "started": "2026-10-12T12:08:29+00:00",
+      "wall_seconds": 122.7,
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "versions": {
+        "browser-use": "0.13.11",
+        "playwright": "not installed",
+        "pydantic": "2.13.5",
+        "httpx": "0.28.1",
+        "python": "3.11.9"
+      },
+      "max_steps": 25,
+      "time_limit": 240,
+      "headless": false,
+      "allowed_domains": [
+        "books.toscrape.com"
+      ],
+      "steps": 13,
+      "model_calls": 15,
+      "prompt_tokens": 178652,
+      "completion_tokens": 4309,
+      "total_tokens": 182961,
+      "cost_usd": 0.222816,
+      "cost_source": "browser-use pricing lookup",
+      "is_done": true,
+      "agent_success_claim": true,
+      "timed_out": false,
+      "guard": null,
+      "error": null,
+      "urls_visited": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+        "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/sophies-world_966/index.html",
+        "https://books.toscrape.com/catalogue/sophies-world_966/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/page-3.html",
+        "https://books.toscrape.com/catalogue/reasons-to-stay-alive_959/index.html"
+      ],
+      "domain_or_page_violations": [],
+      "blocked_sites": [],
+      "challenge": null,
+      "suspicious_page_text_reported_by_agent": [],
+      "validation_errors": [],
+      "fresh_profile": true,
+      "extensions_enabled": false
+    },
+    "score": {
+      "expected": 3,
+      "returned": 3,
+      "verified_ok": 3,
+      "success": true
+    },
+    "fingerprint": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]"
+  },
+  "deterministic": {
+    "stats": {
+      "requests": 6,
+      "seconds": 4.62,
+      "found": 3,
+      "wanted": 3
+    },
+    "score": {
+      "expected": 3,
+      "returned": 3,
+      "verified_ok": 3,
+      "success": true
+    },
+    "fingerprint": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]"
+  }
+}
