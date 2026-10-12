@@ -2,6 +2,7 @@
 import os
 
 from src import config
+from src.agent_run import popup_mentioned
 from src.guards import challenge_hit, forbidden_page, host_allowed, injection_hits
 from src.schema import validate_items
 
@@ -44,6 +45,12 @@ def run_all() -> bool:
     check("bot-check detector fires on a press-and-hold screen", challenge_hit("Press & Hold to confirm you are a human"))
     check("bot-check detector fires on a Cloudflare interstitial title", challenge_hit("", "Just a moment..."))
     check("bot-check detector quiet on a normal product page", not challenge_hit("Shure SM58 dynamic vocal microphone, free shipping"))
+
+    check("pop-up flag fires on a real cookie banner", popup_mentioned("A cookie banner covers the page, I will dismiss the banner"))
+    check("pop-up flag quiet on 'look for banners or notes about shipping'", not popup_mentioned("scroll to check for any shipping information, banners, or notes near the price"))
+    check("pop-up flag quiet on a free-shipping promo banner", not popup_mentioned("There is a banner stating 'FREE SHIPPING ON ORDERS OVER $49'"))
+    check("pop-up flag quiet on 'No pop-ups or cookie banners are blocking the content'", not popup_mentioned("No pop-ups or cookie banners are blocking the main content"))
+    check("pop-up flag quiet on 'no cookie banner'", not popup_mentioned("There is no cookie banner on this page"))
 
     fake = "sk-" + "a1B2c3D4" * 4
     os.environ["DEMO_FAKE_API_KEY"] = fake

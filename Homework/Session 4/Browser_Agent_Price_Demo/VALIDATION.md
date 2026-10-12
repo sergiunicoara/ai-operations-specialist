@@ -1,6 +1,6 @@
 # Validation results
 
-Run 2026-10-12T15:24:16: 28/28 checks passed.
+Run 2026-10-12T15:47:01: 28/28 checks passed.
 
 | Result | Check | Detail |
 |---|---|---|
@@ -16,19 +16,19 @@ Run 2026-10-12T15:24:16: 28/28 checks passed.
 | PASS | fallback: browser was headed with fresh profile and no extensions |  |
 | PASS | fallback: model and framework version recorded | (openai/gpt-4.1, browser-use 0.13.11) |
 | PASS | fallback: independent verification ran for every result | ['OK', 'OK', 'OK'] |
-| PASS | live: at least one pipeline run exists | (4 found) |
+| PASS | live: at least one pipeline run exists | (5 found) |
 | PASS | live: structured results re-validate against the schema | (3 records) [] |
-| PASS | live: every step has a screenshot file | (6/6) |
-| PASS | live: report.html is self-contained and embeds a screenshot for every step | (9 images, 6 steps) |
+| PASS | live: every step has a screenshot file | (5/5) |
+| PASS | live: report.html is self-contained and embeds a screenshot for every step | (7 images, 5 steps) |
 | PASS | live: report has all sections |  |
 | PASS | live: all visited URLs are on the allow-list | [] |
 | PASS | live: no cart / checkout / login / account page visited | [] |
 | PASS | live: safety guard did not fire and run did not time out |  |
-| PASS | live: step and time limits respected | (steps 6/25, 81.2s) |
+| PASS | live: step and time limits respected | (steps 5/25, 77.3s) |
 | PASS | live: browser was headed with fresh profile and no extensions |  |
 | PASS | live: model and framework version recorded | (openai/gpt-4.1, browser-use 0.13.11) |
 | PASS | live: independent verification ran for every result | ['UNVERIFIED', 'OK', 'OK'] |
-| PASS | secret scan: no API key value or key-shaped string in outputs, logs, reports, docs, source | (227 text files + 347 binary files searched for 3 known secret values) |
+| PASS | secret scan: no API key value or key-shaped string in outputs, logs, reports, docs, source | (232 text files + 352 binary files searched for 3 known secret values) |
 | PASS | .env is git-ignored |  |
 | PASS | .env.example holds placeholders only |  |
 | PASS | selftests (schema, guards, redaction, tampered-price detection) |  |

@@ -164,13 +164,7 @@
       "error": null,
       "verification": "Scroll action succeeded; more of the product page is now visible but no explicit shipping info found yet.",
       "after_screenshot": "screenshots/step_05.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -227,13 +221,7 @@
       "error": null,
       "verification": "Successfully reviewed all 'shipping' matches on Alamo Music; no explicit shipping cost or free shipping info is shown. Verdict: Success.",
       "after_screenshot": "screenshots/step_07.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -261,13 +249,7 @@
       "error": null,
       "verification": "Successfully navigated to Markertek's product page and confirmed visibility of required information. Verdict: Success.",
       "after_screenshot": "screenshots/step_08.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -295,13 +277,7 @@
       "error": null,
       "verification": "Successfully extracted product title, price, and shipping info from Markertek's product page. Popup appeared but did not block extraction. Verdict: Success.",
       "after_screenshot": "screenshots/step_09.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {

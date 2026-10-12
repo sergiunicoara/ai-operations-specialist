@@ -108,13 +108,7 @@
       "error": null,
       "verification": "Clicked 'Press & Hold' but still blocked by human verification; challenge remains on screen. Verdict: Failure/Uncertain.",
       "after_screenshot": "screenshots/step_03.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -211,13 +205,7 @@
       "error": null,
       "verification": "Scrolled down on Alamo Music but did not find any shipping information displayed on the product page. Product title and price are confirmed.",
       "after_screenshot": "screenshots/step_06.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -273,13 +261,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     }
   ],

@@ -148,13 +148,7 @@
       "error": null,
       "verification": "Scroll action completed; no explicit shipping information found in visible sections. Need to search for shipping info in page text.",
       "after_screenshot": "screenshots/step_03.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -182,13 +176,7 @@
       "error": null,
       "verification": "Successfully searched for shipping information; no explicit shipping cost or free shipping statement found on the product page. Verdict: Shipping cost not shown.",
       "after_screenshot": "screenshots/step_04.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -244,13 +232,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     }
   ],

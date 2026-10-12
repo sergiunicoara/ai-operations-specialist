@@ -133,13 +133,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -167,13 +161,7 @@
       "error": null,
       "verification": "Scrolled down the page, but did not find any visible shipping information. Verdict: Uncertain, further investigation needed.",
       "after_screenshot": "screenshots/step_04.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -201,13 +189,7 @@
       "error": null,
       "verification": "Searched for shipping info; found matches but no explicit shipping cost shown on the product page. Verdict: Shipping not shown, will report as null.",
       "after_screenshot": "screenshots/step_05.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -235,13 +217,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {

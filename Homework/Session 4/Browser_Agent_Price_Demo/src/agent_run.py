@@ -6,6 +6,7 @@ import argparse
 import asyncio
 import base64
 import json
+import re
 import shutil
 import tempfile
 import time
@@ -54,7 +55,22 @@ def domain_patterns(domains: list[str]) -> list[str]:
 
 
 FAIL_WORDS = ("failure", "failed", "did not work", "didn't work", "unsuccessful", "not successful", "error", "wrong", "mistake", "unexpected")
-POPUP_WORDS = ("cookie", "consent", "banner", "popup", "pop-up", "modal", "overlay", "newsletter", "dismiss")
+# Cookie banner / pop-up wording. A bare "banner" is NOT enough: shops have promo banners and the agent often says
+# "look for banners or notes about shipping". Statements like "no cookie banner" are ignored too.
+POPUP_RE = re.compile(
+    r"(?<!no )(?<!any )(?<!without )\b(cookie|consent (banner|dialog|popup|pop-up)|pop-?up|newsletter (popup|pop-up|modal|signup)|modal dialog|overlay (covers|blocks|is covering)|banner (covers|blocks|is covering|is blocking)|dismiss(ed|ing)? (the )?(banner|popup|pop-up|dialog|overlay))",
+    re.I,
+)
+NEGATION_RE = re.compile(r"\b(no|not|none|without|any|never|neither|nor|n't)\b|n't\b", re.I)
+
+
+def popup_mentioned(text: str) -> bool:
+    """True if the text mentions a cookie banner / pop-up that is actually there, not 'no pop-ups are blocking'."""
+    for m in POPUP_RE.finditer(text or ""):
+        before = text[max(0, m.start() - 40):m.start()]
+        if not NEGATION_RE.search(before):
+            return True
+    return False
 
 
 def flag_step(rec: dict, prev: dict | None) -> list[dict]:
@@ -66,7 +82,7 @@ def flag_step(rec: dict, prev: dict | None) -> list[dict]:
     if ev.startswith(("fail", "unsuccess")) or any(w in ev for w in FAIL_WORDS[:6]):
         flags.append({"kind": "failed", "label": "Agent says previous action failed", "detail": rec["evaluation"][:200]})
     blob = " ".join([rec.get("thinking") or "", rec.get("next_goal") or "", ev]).lower()
-    if any(w in blob for w in POPUP_WORDS):
+    if popup_mentioned(blob):
         flags.append({"kind": "popup", "label": "Cookie banner / pop-up mentioned", "detail": ""})
     if prev and rec.get("actions") and rec["actions"] == prev.get("actions"):
         flags.append({"kind": "repeat", "label": "Same action repeated", "detail": ", ".join(map(str, rec["action_names"]))})

@@ -172,11 +172,6 @@
           "kind": "failed",
           "label": "Agent says previous action failed",
           "detail": "Waited after pressing verification button, but still blocked by human challenge. Failure."
-        },
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
         }
       ],
       "recovered": true
@@ -264,13 +259,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     }
   ],

@@ -103,13 +103,7 @@
       "error": null,
       "verification": "Successfully loaded Alamo Music's product page and confirmed product title and price are visible. Shipping info not yet found.",
       "after_screenshot": "screenshots/step_03.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -137,13 +131,7 @@
       "error": null,
       "verification": "Scrolled down on Alamo Music but did not find any shipping information displayed on the product page. Title and price are confirmed.",
       "after_screenshot": "screenshots/step_04.png",
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     },
     {
@@ -199,13 +187,7 @@
       "error": null,
       "verification": "(final step: the agent ended the run)",
       "after_screenshot": null,
-      "flags": [
-        {
-          "kind": "popup",
-          "label": "Cookie banner / pop-up mentioned",
-          "detail": ""
-        }
-      ],
+      "flags": [],
       "recovered": false
     }
   ],
