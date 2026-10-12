@@ -1,34 +1,34 @@
 # Validation results
 
-Run 2026-10-12T12:03:08: 28/28 checks passed.
+Run 2026-10-12T15:24:16: 28/28 checks passed.
 
 | Result | Check | Detail |
 |---|---|---|
-| PASS | fallback: at least one pipeline run exists | (10 found) |
+| PASS | fallback: at least one pipeline run exists | (13 found) |
 | PASS | fallback: structured results re-validate against the schema | (3 records) [] |
-| PASS | fallback: every step has a screenshot file | (10/10) |
-| PASS | fallback: report.html is self-contained and embeds a screenshot for every step | (19 images, 10 steps) |
+| PASS | fallback: every step has a screenshot file | (6/6) |
+| PASS | fallback: report.html is self-contained and embeds a screenshot for every step | (11 images, 6 steps) |
 | PASS | fallback: report has all sections |  |
 | PASS | fallback: all visited URLs are on the allow-list | [] |
 | PASS | fallback: no cart / checkout / login / account page visited | [] |
 | PASS | fallback: safety guard did not fire and run did not time out |  |
-| PASS | fallback: step and time limits respected | (steps 10/25, 93.2s) |
+| PASS | fallback: step and time limits respected | (steps 6/25, 58.5s) |
 | PASS | fallback: browser was headed with fresh profile and no extensions |  |
 | PASS | fallback: model and framework version recorded | (openai/gpt-4.1, browser-use 0.13.11) |
-| PASS | fallback: independent verification ran for every result | ['OK', 'UNVERIFIED', 'OK'] |
-| PASS | live: at least one pipeline run exists | (3 found) |
+| PASS | fallback: independent verification ran for every result | ['OK', 'OK', 'OK'] |
+| PASS | live: at least one pipeline run exists | (4 found) |
 | PASS | live: structured results re-validate against the schema | (3 records) [] |
-| PASS | live: every step has a screenshot file | (5/5) |
-| PASS | live: report.html is self-contained and embeds a screenshot for every step | (7 images, 5 steps) |
+| PASS | live: every step has a screenshot file | (6/6) |
+| PASS | live: report.html is self-contained and embeds a screenshot for every step | (9 images, 6 steps) |
 | PASS | live: report has all sections |  |
 | PASS | live: all visited URLs are on the allow-list | [] |
 | PASS | live: no cart / checkout / login / account page visited | [] |
 | PASS | live: safety guard did not fire and run did not time out |  |
-| PASS | live: step and time limits respected | (steps 5/25, 63.4s) |
+| PASS | live: step and time limits respected | (steps 6/25, 81.2s) |
 | PASS | live: browser was headed with fresh profile and no extensions |  |
 | PASS | live: model and framework version recorded | (openai/gpt-4.1, browser-use 0.13.11) |
 | PASS | live: independent verification ran for every result | ['UNVERIFIED', 'OK', 'OK'] |
-| PASS | secret scan: no API key value or key-shaped string in outputs, logs, reports, docs, source | (199 text files + 287 binary files searched for 3 known secret values) |
+| PASS | secret scan: no API key value or key-shaped string in outputs, logs, reports, docs, source | (227 text files + 347 binary files searched for 3 known secret values) |
 | PASS | .env is git-ignored |  |
 | PASS | .env.example holds placeholders only |  |
 | PASS | selftests (schema, guards, redaction, tampered-price detection) |  |

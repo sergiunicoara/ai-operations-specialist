@@ -4,7 +4,9 @@ Measured on 2026-10-12. Model: OpenAI `gpt-4.1` through Browser Use 0.13.11 (Pla
 
 "Success" is strict: every expected item came back as a schema-valid record **and** its page was re-fetched independently and matched (price and, for the agent, a URL that exists).
 
-## Fallback task: three named books on books.toscrape.com
+> **Update (fallback task shortened):** the tables below were measured on the *original* fallback task (books on catalogue pages 1-3: *Sapiens*, *Sophie's World*, *Reasons to Stay Alive*), which made the agent paginate and take 10-23 steps. The task now uses three books on the first page (*Sapiens*, *Sharp Objects*, *The Requiem Red*). One run on the new task: 6 steps, 58.5 s, $0.087, all 3 verified OK including URLs; deterministic 4 requests, 3.4 s. A second run on it lost its browser connection (Chrome "Failed to open a new tab") after 3 steps and was kept in `runs/_incomplete/`. The 3-run comparison has **not** been repeated on the new task.
+
+## Fallback task (original): three named books on books.toscrape.com
 
 | Measure (mean of 3 runs) | Browser agent | Deterministic (HTTP + fixed selectors) |
 |---|---|---|

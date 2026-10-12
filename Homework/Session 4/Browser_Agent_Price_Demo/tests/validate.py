@@ -31,7 +31,12 @@ def secret_scan() -> tuple[int, int, list[str]]:
     files = [f for r in roots if r.exists() for f in r.rglob("*") if f.is_file()]
     files += [f for f in ROOT.glob("*") if f.is_file() and f.name != ".env"]
     for f in files:
-        data = f.read_bytes()
+        if f.name.startswith("~$"):  # Office lock file while a document is open
+            continue
+        try:
+            data = f.read_bytes()
+        except OSError:
+            continue
         if f.suffix.lower() in TEXT_EXT or f.suffix == "":
             scanned += 1
             text = data.decode("utf-8", errors="ignore")

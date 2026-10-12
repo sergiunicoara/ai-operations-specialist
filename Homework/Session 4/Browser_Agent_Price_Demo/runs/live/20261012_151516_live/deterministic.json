@@ -1,0 +1,40 @@
+{
+  "records": [
+    {
+      "site": "alamomusic.com",
+      "product_title": "Shure SM58-LC Cardioid Dynamic Vocal Microphone",
+      "price": 109.0,
+      "shipping_cost": null,
+      "total": 109.0,
+      "currency": "USD",
+      "url": "https://www.alamomusic.com/products/shure-sm58-lc-vocal-microphone",
+      "confidence": "medium",
+      "notes": "Price from the store's public product JSON. Shipping is calculated at checkout and is not in this data.",
+      "timestamp": "2026-10-12T12:16:48+00:00"
+    },
+    {
+      "site": "markertek.com",
+      "product_title": "Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included",
+      "price": 109.0,
+      "shipping_cost": 0.0,
+      "total": 109.0,
+      "currency": "USD",
+      "url": "https://www.markertek.com/product/sm58lc/shure-sm58-lc-handheld-dynamic-cardioid-microphone-cable-not-included",
+      "confidence": "medium",
+      "notes": "Free shipping: page banner says free over $49; price is above it.",
+      "timestamp": "2026-10-12T12:16:49+00:00"
+    }
+  ],
+  "stats": {
+    "requests": 3,
+    "seconds": 2.0,
+    "errors": [
+      {
+        "site": "sweetwater.com",
+        "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.sweetwater.com/store/detail/SM58--shure-sm58-cardioid-dynamic-vocal-mi"
+      }
+    ],
+    "wanted": 3,
+    "found": 2
+  }
+}

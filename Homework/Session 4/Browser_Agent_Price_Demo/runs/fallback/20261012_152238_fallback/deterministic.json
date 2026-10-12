@@ -1,0 +1,46 @@
+{
+  "records": [
+    {
+      "site": "books.toscrape.com",
+      "product_title": "Sharp Objects",
+      "price": 47.82,
+      "shipping_cost": null,
+      "total": 47.82,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/sharp-objects_997/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T12:23:47+00:00"
+    },
+    {
+      "site": "books.toscrape.com",
+      "product_title": "Sapiens: A Brief History of Humankind",
+      "price": 54.23,
+      "shipping_cost": null,
+      "total": 54.23,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T12:23:47+00:00"
+    },
+    {
+      "site": "books.toscrape.com",
+      "product_title": "The Requiem Red",
+      "price": 22.65,
+      "shipping_cost": null,
+      "total": 22.65,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/the-requiem-red_995/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T12:23:48+00:00"
+    }
+  ],
+  "stats": {
+    "requests": 4,
+    "seconds": 3.35,
+    "found": 3,
+    "wanted": 3
+  }
+}

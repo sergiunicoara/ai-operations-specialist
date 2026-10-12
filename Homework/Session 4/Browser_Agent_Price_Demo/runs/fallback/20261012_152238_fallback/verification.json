@@ -1,0 +1,41 @@
+[
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sharp-objects_997/index.html",
+    "agent_price": 47.82,
+    "agent_title": "Sharp Objects",
+    "page_price": 47.82,
+    "page_title": "Sharp Objects",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  },
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+    "agent_price": 54.23,
+    "agent_title": "Sapiens: A Brief History of Humankind",
+    "page_price": 54.23,
+    "page_title": "Sapiens: A Brief History of Humankind",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  },
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/the-requiem-red_995/index.html",
+    "agent_price": 22.65,
+    "agent_title": "The Requiem Red",
+    "page_price": 22.65,
+    "page_title": "The Requiem Red",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  }
+]
