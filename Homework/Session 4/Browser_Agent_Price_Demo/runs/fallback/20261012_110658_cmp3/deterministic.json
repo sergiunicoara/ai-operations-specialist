@@ -1,0 +1,46 @@
+{
+  "records": [
+    {
+      "site": "books.toscrape.com",
+      "product_title": "Sapiens: A Brief History of Humankind",
+      "price": 54.23,
+      "shipping_cost": null,
+      "total": 54.23,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T08:11:06+00:00"
+    },
+    {
+      "site": "books.toscrape.com",
+      "product_title": "Sophie's World",
+      "price": 15.94,
+      "shipping_cost": null,
+      "total": 15.94,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/sophies-world_966/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T08:11:07+00:00"
+    },
+    {
+      "site": "books.toscrape.com",
+      "product_title": "Reasons to Stay Alive",
+      "price": 26.41,
+      "shipping_cost": null,
+      "total": 26.41,
+      "currency": "GBP",
+      "url": "https://books.toscrape.com/catalogue/reasons-to-stay-alive_959/index.html",
+      "confidence": "high",
+      "notes": "No shipping shown on this practice site; total equals price.",
+      "timestamp": "2026-10-12T08:11:08+00:00"
+    }
+  ],
+  "stats": {
+    "requests": 6,
+    "seconds": 5.1,
+    "found": 3,
+    "wanted": 3
+  }
+}

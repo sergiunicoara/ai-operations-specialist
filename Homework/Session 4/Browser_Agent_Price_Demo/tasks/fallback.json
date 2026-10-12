@@ -1,0 +1,17 @@
+{
+  "name": "fallback",
+  "title": "Fallback: find and compare three books on a scraping practice site",
+  "description": "books.toscrape.com is a sandbox built for scraping and automation practice. It has no shipping, so shipping is reported as null and total equals price.",
+  "allowed_domains": ["books.toscrape.com"],
+  "start_urls": ["https://books.toscrape.com/"],
+  "items": [
+    "Sapiens: A Brief History of Humankind",
+    "Sophie's World",
+    "Reasons to Stay Alive"
+  ],
+  "currency_hint": "GBP",
+  "task_text": "Open https://books.toscrape.com/ . The site has no search box, so browse the main catalogue list (all three books are within the first 3 pages; use the 'next' link at the bottom of the list, not the category links) to find these three books by exact title:\n{items}\nFor each book open its product page and read the title, the price (shown in pounds) and any shipping information. The site shows no shipping cost: set shipping_cost to null, total equal to price, currency GBP, and say so in notes. Use the product page URL as the url. Report one result per book (site = books.toscrape.com). Then call done. Do not log in, add anything to a basket, or leave the site.",
+  "reference": {
+    "kind": "books_toscrape"
+  }
+}

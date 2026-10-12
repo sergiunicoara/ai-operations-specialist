@@ -1,0 +1,28 @@
+[
+  {
+    "site": "alamomusic.com",
+    "url": "https://www.alamomusic.com/products/shure-sm58-lc-vocal-microphone",
+    "agent_price": 109.0,
+    "agent_title": "Shure SM58-LC Vocal Microphone",
+    "page_price": 109.0,
+    "page_title": "Shure SM58-LC Cardioid Dynamic Vocal Microphone",
+    "source": "json-ld",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  },
+  {
+    "site": "markertek.com",
+    "url": "https://www.markertek.com/product/sm58lc/shure-sm58-lc-handheld-dynamic-cardioid-microphone-cable-not-included",
+    "agent_price": 109.0,
+    "agent_title": "Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included",
+    "page_price": 109.0,
+    "page_title": "Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included",
+    "source": "json-ld",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  }
+]

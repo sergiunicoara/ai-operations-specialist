@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "task": "fallback",
+    "title": "Fallback: find and compare three books on a scraping practice site",
+    "started": "2026-10-12T08:59:06+00:00",
+    "wall_seconds": 71.9,
+    "provider": "openai",
+    "model": "gpt-4.1",
+    "versions": {
+      "browser-use": "0.13.11",
+      "playwright": "not installed",
+      "pydantic": "2.13.5",
+      "httpx": "0.28.1",
+      "python": "3.11.9"
+    },
+    "max_steps": 25,
+    "time_limit": 240,
+    "headless": true,
+    "allowed_domains": [
+      "books.toscrape.com"
+    ],
+    "steps": 0,
+    "model_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "cost_usd": null,
+    "cost_source": "unavailable",
+    "is_done": false,
+    "agent_success_claim": null,
+    "timed_out": false,
+    "guard": null,
+    "error": null,
+    "urls_visited": [
+      "https://books.toscrape.com/",
+      "https://books.toscrape.com/",
+      "https://books.toscrape.com/",
+      "https://books.toscrape.com/"
+    ],
+    "domain_or_page_violations": [],
+    "blocked_sites": [],
+    "challenge": null,
+    "suspicious_page_text_reported_by_agent": [],
+    "validation_errors": [],
+    "fresh_profile": true,
+    "extensions_enabled": false
+  },
+  "steps": [],
+  "results": [],
+  "raw_final": ""
+}

@@ -1,0 +1,114 @@
+{
+  "agent": [
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_113859_cmp1",
+      "seconds": 73.7,
+      "cost": 0.159806,
+      "model_calls": 10,
+      "page_loads": 10,
+      "tokens": 135907,
+      "steps": 10,
+      "success": false,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_114028_cmp2",
+      "seconds": 90.6,
+      "cost": 0.168732,
+      "model_calls": 11,
+      "page_loads": 11,
+      "tokens": 150123,
+      "steps": 11,
+      "success": false,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_114210_cmp3",
+      "seconds": 54.1,
+      "cost": 0.08517,
+      "model_calls": 6,
+      "page_loads": 6,
+      "tokens": 77253,
+      "steps": 6,
+      "success": false,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    }
+  ],
+  "deterministic": [
+    {
+      "seconds": 4.8,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    },
+    {
+      "seconds": 4.86,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    },
+    {
+      "seconds": 4.75,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    }
+  ],
+  "A": {
+    "time_s": 72.8,
+    "cost": 0.13790266666666665,
+    "requests": "9 model calls + 9 page loads",
+    "success": "0/3",
+    "consistent": "3/3 identical",
+    "tokens": 121094.33333333333
+  },
+  "D": {
+    "time_s": 4.803333333333334,
+    "cost": 0.0,
+    "requests": "6 HTTP requests",
+    "success": "3/3",
+    "consistent": "3/3 identical"
+  }
+}

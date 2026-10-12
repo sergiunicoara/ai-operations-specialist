@@ -1,0 +1,1020 @@
+python-dotenv could not parse statement starting at line 15
+WARNING  [dotenv.main] python-dotenv could not parse statement starting at line 15
+WARNING  [dotenv.main] python-dotenv could not parse statement starting at line 15
+WARNING  [dotenv.main] python-dotenv could not parse statement starting at line 15
+WARNING  [dotenv.main] python-dotenv could not parse statement starting at line 15
+WARNING  [dotenv.main] python-dotenv could not parse statement starting at line 15
+INFO     [Agent] [34m🎯 Task: Open https://books.toscrape.com/ . The site has no search box, so browse the main catalogue list (all three books are within the first 3 pages; use the 'next' link at the bottom of the list, not the category links) to find these three books by exact title:
+- Sapiens: A Brief History of Humankind
+- Sophie's World
+- Reasons to Stay Alive
+For each book open its product page and read the title, the price (shown in pounds) and any shipping information. The site shows no shipping cost: set shipping_cost to null, total equal to price, currency GBP, and say so in notes. Use the product page URL as the url. Report one result per book (site = books.toscrape.com). Then call done. Do not log in, add anything to a basket, or leave the site.
+Expected output format: AgentReport
+{
+  "$defs": {
+    "AgentItem": {
+      "description": "What the browser agent returns per site/product (no timestamp: the harness adds it).",
+      "properties": {
+        "site": {
+          "description": "Shop domain, e.g. example.com",
+          "title": "Site",
+          "type": "string"
+        },
+        "product_title": {
+          "description": "Product title exactly as shown on the page",
+          "title": "Product Title",
+          "type": "string"
+        },
+        "price": {
+          "description": "Item price as a number, no currency symbol",
+          "title": "Price",
+          "type": "number"
+        },
+        "shipping_cost": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Shipping cost of the default option; 0 if free; null if the page does not show it",
+          "title": "Shipping Cost"
+        },
+        "total": {
+          "description": "price + shipping_cost (price alone if shipping is not shown)",
+          "title": "Total",
+          "type": "number"
+        },
+        "currency": {
+          "description": "ISO 4217 code, e.g. USD, GBP",
+          "title": "Currency",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the product page the numbers came from",
+          "title": "Url",
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "description": "Anything unusual: shipping not shown, price range, pop-ups, uncertainty",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "site",
+        "product_title",
+        "price",
+        "total",
+        "currency",
+        "url",
+        "confidence"
+      ],
+      "title": "AgentItem",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "results": {
+      "items": {
+        "$ref": "#/$defs/AgentItem"
+      },
+      "title": "Results",
+      "type": "array"
+    },
+    "blocked_sites": {
+      "description": "Sites that blocked you, showed a CAPTCHA, or required login",
+      "items": {
+        "type": "string"
+      },
+      "title": "Blocked Sites",
+      "type": "array"
+    },
+    "suspicious_page_text": {
+      "description": "Page text that looked like instructions aimed at an AI agent",
+      "items": {
+        "type": "string"
+      },
+      "title": "Suspicious Page Text",
+      "type": "array"
+    }
+  },
+  "title": "AgentReport",
+  "type": "object"
+}[0m
+INFO     [Agent] Starting a browser-use agent with version 0.13.11, with provider=openai and model=gpt-4.1
+INFO     [Agent]   ▶️   [34mnavigate[0m: [35murl[0m: https://books.toscrape.com/, [35mnew_tab[0m: False
+WARNING  [BrowserSession] ⚠️ Using glob patterns in allowed_domains. Note: Patterns like "*.example.com" will match both subdomains AND the main domain.
+INFO     [tools] 🔗 Navigated to https://books.toscrape.com/
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 1:
+INFO     [Agent]   [32m👍 Eval: Successfully loaded the main catalogue page and identified one target book ('Sapiens: A Brief History of Humankind').[0m
+INFO     [Agent]   🧠 Memory: Located 'Sapiens: A Brief History of Humankind' on page 1. Still need to find 'Sophie's World' and 'Reasons to Stay Alive'. Will extract details for Sapiens first.
+INFO     [Agent]   [34m🎯 Next goal: Click on the product link for 'Sapiens: A Brief History of Humankind' to open its product page and extract details.[0m
+INFO     [Agent]   ▶️   [34mclick[0m: [35mindex[0m: 768
+INFO     [tools] 🖱️ Clicked a "Sapiens: A Brief History ..."
+INFO     [Agent] 📋 Plan updated with 3 steps
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 2:
+INFO     [Agent]   [32m👍 Eval: Successfully opened the product page for 'Sapiens: A Brief History of Humankind.'[0m
+INFO     [Agent]   🧠 Memory: Located and opened the product page for 'Sapiens.' Title and price are visible; no shipping info is shown. Still need to find the other two books.
+INFO     [Agent]   [34m🎯 Next goal: Extract title, price, and confirm absence of shipping info for 'Sapiens: A Brief History of Humankind.'[0m
+INFO     [Agent]   ▶️   [34mextract[0m: [35mquery[0m: Extract the product title exactly as shown, the price in pounds (as a number), confirm that no shipping cost is shown (set shipping_cost to null), set..., [35mextract_links[0m: False, [35mextract_images[0m: False, [35mstart_from_char[0m: 0, [35malready_collected[0m: []
+INFO     [tools] 📄 <url>
+https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html
+</url>
+<query>
+Extract the product title exactly as shown, the price in pounds (as a number), confirm that no shipping cost is shown (set shipping_cost to null), set total equal to price, currency GBP, and note that shipping is not shown. Also extract the current URL.
+</query>
+<result>
+product_title: Sapiens: A Brief History of Humankind  
+price: 54.23  
+shipping_cost: null  
+total: 54.23  
+currency: GBP  
+shipping_note: Shipping cost is not shown.  
+url: [URL not provided in the content]
+</result>
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 21 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#6505 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 21 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#b8c3 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#b8c3 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#6505                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#6505)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#c48b                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#c48b)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#c48b)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#6505) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#b8c3                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#b8c3) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#b8c3 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#b8c3 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#b8c3 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 3:
+INFO     [Agent]   [32m👍 Eval: Successfully extracted all required details for 'Sapiens: A Brief History of Humankind'.[0m
+INFO     [Agent]   🧠 Memory: Extracted details for Sapiens. Still need to find and process Sophie's World and Reasons to Stay Alive by browsing catalogue pages 2 and 3 if needed.
+INFO     [Agent]   [34m🎯 Next goal: Return to the main catalogue page to search for 'Sophie's World' and 'Reasons to Stay Alive'.[0m
+INFO     [Agent]   ▶️   [34mnavigate[0m: [35murl[0m: https://books.toscrape.com/, [35mnew_tab[0m: False
+INFO     [tools] 🔗 Navigated to https://books.toscrape.com/
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 30 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#2b6d 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 30 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#9d77 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#2b6d ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#9d77                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#9d77)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#3c5b                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#3c5b)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#3c5b)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#9d77) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#2b6d                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#2b6d) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#2b6d 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#2b6d 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#2b6d 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 4:
+INFO     [Agent]   [32m👍 Eval: Successfully returned to the main catalogue page; ready to continue searching for the remaining books.[0m
+INFO     [Agent]   🧠 Memory: Extracted Sapiens details. Need to find and process Sophie's World and Reasons to Stay Alive by browsing pages 2 and 3 if needed. Still on page 1.
+INFO     [Agent]   [34m🎯 Next goal: Scroll down to locate and click the 'next' link at the bottom of the catalogue to go to page 2.[0m
+INFO     [Agent]   ▶️  [1/3] [34mscroll[0m: [35mdown[0m: True, [35mpages[0m: 3.1, [35mindex[0m: None
+WARNING  [cdp_use.client] Received duplicate response for request 150 - ignoring
+INFO     [tools] 🔍 Scrolled down 3.1 pages
+INFO     [Agent]   ▶️  [2/3] [34msearch_page[0m: [35mpattern[0m: next, [35mregex[0m: False, [35mcase_sensitive[0m: False, [35mcontext_chars[0m: 40, [35mcss_scope[0m: None, [35mmax_results[0m: 5
+INFO     [tools] 🔎 Searched page for "next": 1 match found.
+INFO     [Agent]   ▶️  [3/3] [34mclick[0m: [35mindex[0m: 3327
+WARNING  [tools] ⚠️ Element index 3327 not available - page may have changed. Try refreshing browser state.
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 37 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#37a1 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 37 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#1d24 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#1d24 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#37a1                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#37a1)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#40d8                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#40d8)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#40d8)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#37a1) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#1d24                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#1d24) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1d24 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1d24 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1d24 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 5:
+INFO     [Agent]   ❔ Eval: Scroll and search for the 'next' link succeeded; it is now visible as index 3762.
+INFO     [Agent]   🧠 Memory: Sapiens details extracted. On main catalogue page 1; ready to proceed to page 2 using the visible 'next' link. Still need Sophie's World and Reasons to Stay Alive.
+INFO     [Agent]   [34m🎯 Next goal: Click the 'next' link (index 3762) to navigate to catalogue page 2 and search for Sophie's World and Reasons to Stay Alive.[0m
+INFO     [Agent]   ▶️   [34mclick[0m: [35mindex[0m: 3762
+WARNING  [cdp_use.client] Received duplicate response for request 184 - ignoring
+INFO     [tools] 🖱️ Clicked a "next"
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 41 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#2e88 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 41 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#fb3f 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#fb3f ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#2e88                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#2e88)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#7b5c                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#7b5c)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#7b5c)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#2e88) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#fb3f                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#fb3f) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#fb3f 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#fb3f 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#fb3f 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 6:
+INFO     [Agent]   [32m👍 Eval: Successfully navigated to catalogue page 2; ready to search for the remaining target books.[0m
+INFO     [Agent]   🧠 Memory: Sapiens details are extracted. Currently on catalogue page 2, searching for Sophie's World and Reasons to Stay Alive. Will check all visible book titles before moving to page 3 if needed.
+INFO     [Agent]   [34m🎯 Next goal: Search the current catalogue page (page 2) for 'Sophie's World' and 'Reasons to Stay Alive.' If either is found, click its product link; otherwise, prepare to go to page 3.[0m
+INFO     [Agent]   ▶️  [1/2] [34msearch_page[0m: [35mpattern[0m: Sophie's World, [35mregex[0m: False, [35mcase_sensitive[0m: False, [35mcontext_chars[0m: 40, [35mcss_scope[0m: None, [35mmax_results[0m: 1
+INFO     [tools] 🔎 Searched page for "Sophie's World": 1 match found.
+INFO     [Agent]   ▶️  [2/2] [34msearch_page[0m: [35mpattern[0m: Reasons to Stay Alive, [35mregex[0m: False, [35mcase_sensitive[0m: False, [35mcontext_chars[0m: 40, [35mcss_scope[0m: None, [35mmax_results[0m: 1
+INFO     [tools] 🔎 Searched page for "Reasons to Stay Alive": 0 matches found.
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [cdp_use.client] Received duplicate response for request 218 - ignoring
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 7:
+INFO     [Agent]   [32m👍 Eval: Successfully found 'Sophie's World' on page 2; did not find 'Reasons to Stay Alive' here. Ready to open its product page.[0m
+INFO     [Agent]   🧠 Memory: Sapiens details are extracted. Located Sophie's World on page 2, but not Reasons to Stay Alive. Need to extract Sophie's World details and then check page 3 for the last book.
+INFO     [Agent]   [34m🎯 Next goal: Scroll down, locate, and click the product link for 'Sophie's World' on this page.[0m
+INFO     [Agent]   ▶️  [1/4] [34mscroll[0m: [35mdown[0m: True, [35mpages[0m: 3.5, [35mindex[0m: None
+INFO     [tools] 🔍 Scrolled down 3.5 pages
+INFO     [Agent]   ▶️  [2/4] [34msearch_page[0m: [35mpattern[0m: Sophie's World, [35mregex[0m: False, [35mcase_sensitive[0m: False, [35mcontext_chars[0m: 60, [35mcss_scope[0m: None, [35mmax_results[0m: 1
+INFO     [tools] 🔎 Searched page for "Sophie's World": 1 match found.
+INFO     [Agent]   ▶️  [3/4] [34mfind_elements[0m: [35mselector[0m: a[title="Sophie's World"], [35mattributes[0m: ['href'], [35mmax_results[0m: 1, [35minclude_text[0m: True
+INFO     [tools] 🔍 Found 1 element matching "a[title="Sophie's World"]".
+INFO     [Agent]   ▶️  [4/4] [34mclick[0m: [35mindex[0m: 4416
+INFO     [tools] 🖱️ Clicked a "How Music Works"
+INFO     [Agent] 📋 Plan updated with 3 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#25b7 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#cb93 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#cb93 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#25b7                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#25b7)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#b895                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#b895)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#b895)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#25b7) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#cb93                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#cb93) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#cb93 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#cb93 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#cb93 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 8:
+INFO     [Agent]   ❔ Eval: Failed: Clicked on 'How Music Works' instead of 'Sophie's World.' Wrong book page opened.
+INFO     [Agent]   🧠 Memory: Extracted details for Sapiens. Attempted to open Sophie's World but landed on How Music Works instead. Still need Sophie's World and Reasons to Stay Alive.
+INFO     [Agent]   [34m🎯 Next goal: Return to catalogue page 2, accurately locate and click the product link for 'Sophie's World.'[0m
+INFO     [Agent]   ▶️   [34mnavigate[0m: [35murl[0m: https://books.toscrape.com/catalogue/page-2.html, [35mnew_tab[0m: False
+INFO     [tools] 🔗 Navigated to https://books.toscrape.com/catalogue/page-2.html
+INFO     [Agent] 📋 Plan updated with 7 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#1856 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#0285 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#1856 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#0285                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#0285)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#53b1                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#53b1)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#53b1)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#0285) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#1856                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#1856) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1856 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1856 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#1856 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 9:
+INFO     [Agent]   [32m👍 Eval: Returned successfully to catalogue page 2 after misclicking on the wrong book. Ready to retry opening Sophie's World.[0m
+INFO     [Agent]   🧠 Memory: Sapiens details extracted. On catalogue page 2, need to accurately open Sophie's World product page. Previous attempt clicked wrong book. Still need Reasons to Stay Alive (likely on page 3).
+INFO     [Agent]   [34m🎯 Next goal: Find all book links on this page, identify and click the one with title='Sophie's World' to open its product page.[0m
+INFO     [Agent]   ▶️   [34mfind_elements[0m: [35mselector[0m: a[title], [35mattributes[0m: ['href', 'title'], [35mmax_results[0m: 40, [35minclude_text[0m: True
+INFO     [tools] 🔍 Found 20 elements matching "a[title]".
+INFO     [Agent] 📋 Plan updated with 7 steps
+WARNING  [cdp_use.client] Received duplicate response for request 331 - ignoring
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 10:
+INFO     [Agent]   [32m👍 Eval: Successfully found all book links with title attributes; ready to identify and click the correct one for 'Sophie's World.'[0m
+INFO     [Agent]   🧠 Memory: Sapiens details are extracted. On catalogue page 2, have a list of all book links with titles. Need to click the correct link for Sophie's World and extract its details next.
+INFO     [Agent]   [34m🎯 Next goal: Click the link with title='Sophie's World' to open its product page.[0m
+INFO     [Agent]   ▶️   [34mfind_elements[0m: [35mselector[0m: a[title], [35mattributes[0m: ['title'], [35mmax_results[0m: 30, [35minclude_text[0m: True
+INFO     [tools] 🔍 Found 20 elements matching "a[title]".
+INFO     [Agent] 📋 Plan updated with 7 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#a1c8 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#d598 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#a1c8 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#d598                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#d598)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#e050                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#e050)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#e050)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#d598) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#a1c8                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#a1c8) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#a1c8 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#a1c8 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#a1c8 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 11:
+INFO     [Agent]   [32m👍 Eval: Successfully found all book links with title attributes; ready to identify and click the correct one for 'Sophie's World.'[0m
+INFO     [Agent]   🧠 Memory: Sapiens details extracted. On catalogue page 2, have a list of all book links with titles. Need to click the correct link for Sophie's World and extract its details next.
+INFO     [Agent]   [34m🎯 Next goal: Click the link with title='Sophie's World' to open its product page and prepare to extract its details.[0m
+INFO     [Agent]   ▶️   [34mclick[0m: [35mindex[0m: 6745
+WARNING  [cdp_use.client] Received duplicate response for request 379 - ignoring
+INFO     [tools] 🖱️ Clicked a "Foolproof Preserving: A Guide ..."
+INFO     [Agent] 📋 Plan updated with 7 steps
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#ac35 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#0d05 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#0d05 ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#ac35                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#ac35)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#0a3d                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#0a3d)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#0a3d)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#ac35) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#0d05                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#0d05) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#0d05 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#0d05 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#0d05 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 12:
+INFO     [Agent]   ❔ Eval: Failed: Clicked on the wrong book ('Foolproof Preserving') instead of 'Sophie's World'.
+INFO     [Agent]   🧠 Memory: Sapiens details are extracted. Multiple failed attempts to open Sophie's World; currently on the wrong product page. Still need Sophie's World and Reasons to Stay Alive.
+INFO     [Agent]   [34m🎯 Next goal: Return to catalogue page 2, find all book links with their titles, and accurately click the link for 'Sophie's World' to open its product page.[0m
+INFO     [Agent]   ▶️  [1/2] [34mnavigate[0m: [35murl[0m: https://books.toscrape.com/catalogue/page-2.html, [35mnew_tab[0m: False
+INFO     [tools] 🔗 Navigated to https://books.toscrape.com/catalogue/page-2.html
+INFO     [Agent] Action "navigate" terminates sequence — skipping 1 remaining action(s)
+INFO     [Agent] 📋 Plan updated with 7 steps
+INFO     [Agent] ⏹️ Agent stopping
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#48be 🏃)
+WARNING  [bubus] ⚠️ EventBus_0f0bbbce🟢(⏳ 0 | ▶️ 2 | ✅ 48 ➡️ 31 👂) handler browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent() has been running for >15s on event. Possible slow processing or deadlock.
+(handler could be trying to await its own result or could be blocked by another async task).
+browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(?▶ BrowserStateRequestEvent#05a0 🏃)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] ⏱️  TIMEOUT ERROR - Handling took more than 15.0s for EventBus_0f0bbbce.browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(?▶ ScreenshotEvent#48be ✅)
+WARNING  [bubus] ================================================================================
+WARNING  [bubus] 📣 BrowserStateRequestEvent#05a0                                       [93m15s[0m
+WARNING  [bubus]    ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_BrowserStateRequestEvent(#05a0)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]       📣 NavigationCompleteEvent#4e6d                                  [93m15s[0m
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.DownloadsWatchdog.on_NavigationCompleteEvent(#4e6d)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]          ☑️ browser_use.browser.watchdog_base.SecurityWatchdog.on_NavigationCompleteEvent(#4e6d)    [92m 0s[0m/30s   ✓
+WARNING  [bubus]    ➡️ browser_use.browser.watchdog_base.DOMWatchdog.on_BrowserStateRequestEvent(#05a0) ⏳ [93m15s[0m/30s  
+WARNING  [bubus]       📣 ScreenshotEvent#48be                                          [91m15s[0m
+WARNING  [bubus]          ⏰ browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent(#48be) ⌛️ [91m15s[0m/[91m15s[0m   ⬅️ [91mTIMEOUT HERE[0m ⏰
+WARNING  [bubus] 
+================================================================================
+
+WARNING  [BrowserSession] 📸 Clean screenshot timed out after 6 seconds - no handler registered or slow page?
+ERROR    [BrowserSession] Exception in background task [capture_screenshot]: TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#48be 🏃) timed out after 15.0s
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 500, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdog_base.py", line 153, in unique_handler
+    result = await actual_handler(event)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\screenshot_watchdog.py", line 78, in on_ScreenshotEvent
+    result = await cdp_session.cdp_client.send.Page.captureScreenshot(params=params, session_id=cdp_session.session_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\cdp_use\cdp\page\library.py", line 137, in captureScreenshot
+    await self._client.send_raw(
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\_cdp_timeout.py", line 115, in send_raw
+    return await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 476, in wait_for
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1128, in execute_handler
+    result_value: Any = await asyncio.wait_for(handler_task, timeout=event_result.timeout)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\AppData\Local\Programs\Python\Python311\Lib\asyncio\tasks.py", line 502, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\utils.py", line 491, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\observability.py", line 73, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\browser_use\browser\watchdogs\dom_watchdog.py", line 711, in _capture_clean_screenshot
+    screenshot_b64 = await screenshot_event.event_result(raise_if_any=True, raise_if_none=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 574, in event_result
+    valid_results = await self.event_results_filtered(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 516, in event_results_filtered
+    raise original_error
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 490, in event_results_filtered
+    await event_result
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\models.py", line 889, in wait_for_handler_to_complete_and_return_result
+    raise self.error if isinstance(self.error, BaseException) else Exception(self.error)  # pyright: ignore[reportUnnecessaryIsInstance]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1070, in _execute_handlers
+    await self.execute_handler(event, handler, timeout=timeout)
+  File "C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\.venv\Lib\site-packages\bubus\service.py", line 1194, in execute_handler
+    raise handler_timeout_error from e
+TimeoutError: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#48be 🏃) timed out after 15.0s
+WARNING  [BrowserSession] 🔍 DOMWatchdog.on_BrowserStateRequestEvent: Clean screenshot failed: Event handler browser_use.browser.watchdog_base.ScreenshotWatchdog.on_ScreenshotEvent#7024(?▶ ScreenshotEvent#48be 🏃) timed out after 15.0s
+INFO     [Agent] 
+
+INFO     [Agent] 📍 Step 13:
+WARNING  [Agent] The agent was interrupted mid-step
+INFO     [Agent] 🛑 Agent stopped
+INFO     [Agent] 
+INFO     [Agent] Did the Agent not work as expected? Let us fix this!
+INFO     [Agent]    Open a short issue on GitHub: https://github.com/browser-use/browser-use/issues
+INFO     [BrowserSession] 📢 on_BrowserStopEvent - Calling reset() (force=True, keep_alive=False)
+INFO     [BrowserSession] [SessionManager] Cleared all owned data (targets, sessions, mappings)
+INFO     [BrowserSession] ✅ Browser session reset complete
+INFO     [BrowserSession] ✅ Browser session reset complete
+INFO     [BrowserSession] 📢 on_BrowserStopEvent - Calling reset() (force=True, keep_alive=False)
+INFO     [BrowserSession] ✅ Browser session reset complete
+INFO     [BrowserSession] ✅ Browser session reset complete
+
+Agent: 12 steps, 13 model calls, 154,685 tokens, $0.191, 252.3s; score {'expected': 3, 'returned': 0, 'verified_ok': 0, 'success': False}
+Deterministic: 6 requests, 4.69s, $0; score {'expected': 3, 'returned': 3, 'verified_ok': 3, 'success': True}
+Safety: violations=[] guard=None timed_out=True
+Report: C:\Users\Sergiu\Desktop\Projects\ai-operations-specialist\Homework\Session 4\Browser_Agent_Price_Demo\runs\fallback\20261012_112309_fallback\report.html

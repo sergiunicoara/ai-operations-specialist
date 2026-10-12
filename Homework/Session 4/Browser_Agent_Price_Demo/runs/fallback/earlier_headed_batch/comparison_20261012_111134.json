@@ -1,0 +1,114 @@
+{
+  "agent": [
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_105904_cmp1",
+      "seconds": 204.9,
+      "cost": 0.34792,
+      "model_calls": 23,
+      "page_loads": 22,
+      "tokens": 302933,
+      "steps": 22,
+      "success": false,
+      "fp": "[[\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_110244_cmp2",
+      "seconds": 244.5,
+      "cost": 0.14531599999999997,
+      "model_calls": 13,
+      "page_loads": 11,
+      "tokens": 134164,
+      "steps": 11,
+      "success": false,
+      "fp": "[]",
+      "score": {
+        "expected": 3,
+        "returned": 0,
+        "verified_ok": 0,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\fallback\\20261012_110658_cmp3",
+      "seconds": 243.4,
+      "cost": 0.162188,
+      "model_calls": 13,
+      "page_loads": 12,
+      "tokens": 142993,
+      "steps": 12,
+      "success": false,
+      "fp": "[]",
+      "score": {
+        "expected": 3,
+        "returned": 0,
+        "verified_ok": 0,
+        "success": false
+      },
+      "violations": []
+    }
+  ],
+  "deterministic": [
+    {
+      "seconds": 4.83,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    },
+    {
+      "seconds": 5.74,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    },
+    {
+      "seconds": 4.74,
+      "requests": 6,
+      "success": true,
+      "fp": "[[\"books.toscrape.com\", \"Reasons to Stay Alive\", 26.41, null, 26.41], [\"books.toscrape.com\", \"Sapiens: A Brief History of Humankind\", 54.23, null, 54.23], [\"books.toscrape.com\", \"Sophie's World\", 15.94, null, 15.94]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 3,
+        "success": true
+      },
+      "errors": []
+    }
+  ],
+  "A": {
+    "time_s": 230.9333333333333,
+    "cost": 0.21847466666666668,
+    "requests": "16 model calls + 15 page loads",
+    "success": "0/3",
+    "consistent": "2/3 identical",
+    "tokens": 193363.33333333334
+  },
+  "D": {
+    "time_s": 5.1033333333333335,
+    "cost": 0.0,
+    "requests": "6 HTTP requests",
+    "success": "3/3",
+    "consistent": "3/3 identical"
+  }
+}

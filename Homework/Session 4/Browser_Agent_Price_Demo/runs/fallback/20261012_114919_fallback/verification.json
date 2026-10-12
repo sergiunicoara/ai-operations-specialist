@@ -1,0 +1,39 @@
+[
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+    "agent_price": 54.23,
+    "agent_title": "Sapiens: A Brief History of Humankind",
+    "page_price": 54.23,
+    "page_title": "Sapiens: A Brief History of Humankind",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  },
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sophies-world_971/index.html",
+    "agent_price": 15.94,
+    "agent_title": "Sophie's World",
+    "status": "UNVERIFIED",
+    "error": "Client error '404 Not Found' for url 'https://books.toscrape.com/catalogue/sophies-world_971/index.html'\nFor more information check: https://developer.mozilla.o",
+    "price_match": null,
+    "title_match": null,
+    "url_visited_by_agent": false
+  },
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/reasons-to-stay-alive_959/index.html",
+    "agent_price": 26.41,
+    "agent_title": "Reasons to Stay Alive",
+    "page_price": 26.41,
+    "page_title": "Reasons to Stay Alive",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  }
+]

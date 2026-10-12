@@ -1,0 +1,15 @@
+{
+  "name": "live",
+  "title": "Live: price including shipping for one product on public shops",
+  "description": "PROPOSED shops, to be confirmed by the presenter before the final run. Product pages are opened directly because several shops disallow their search pages in robots.txt.",
+  "product_name": "Shure SM58-LC Cardioid Dynamic Vocal Microphone (new, no cable)",
+  "allowed_domains": ["sweetwater.com", "alamomusic.com", "markertek.com"],
+  "sites": [
+    {"domain": "sweetwater.com", "start_url": "https://www.sweetwater.com/store/detail/SM58--shure-sm58-cardioid-dynamic-vocal-microphone", "extractor": "jsonld", "free_shipping_rule": null},
+    {"domain": "alamomusic.com", "start_url": "https://www.alamomusic.com/products/shure-sm58-lc-vocal-microphone", "extractor": "shopify_json", "currency": "USD"},
+    {"domain": "markertek.com", "start_url": "https://www.markertek.com/product/sm58lc/shure-sm58-lc-handheld-dynamic-cardioid-microphone-cable-not-included", "extractor": "jsonld", "free_shipping_rule": "FREE SHIPPING ON ORDERS OVER [$]([0-9]+)"}
+  ],
+  "currency_hint": "USD",
+  "task_text": "Compare the price of this product including shipping on these shops: {product}\nOpen each product page below, one site at a time, and confirm it is the same product (model SM58-LC, new condition):\n{sites}\nOn each page read the product title as shown, the price, and the shipping information shown on the product page (a banner, a note near the price, or a shipping/delivery tab you can open on the same page). Shipping cost 0 if the page says shipping is free for this item; null if the page does not state it. Do not open the cart or checkout to find out. Close a cookie banner or pop-up if it covers the page (decline optional cookies). Report one result per shop with the product page URL. Then call done.",
+  "reference": {"kind": "sites"}
+}

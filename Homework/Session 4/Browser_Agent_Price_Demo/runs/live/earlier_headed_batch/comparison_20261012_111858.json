@@ -1,0 +1,129 @@
+{
+  "agent": [
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\live\\20261012_111136_cmp1",
+      "seconds": 184.0,
+      "cost": 0.22111599999999998,
+      "model_calls": 12,
+      "page_loads": 9,
+      "tokens": 153290,
+      "steps": 9,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Cardioid Dynamic Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0], [\"sweetwater.com\", \"Shure SM58 Cardioid Dynamic Vocal Microphone\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 3,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\live\\20261012_111453_cmp2",
+      "seconds": 113.7,
+      "cost": 0.08377399999999999,
+      "model_calls": 7,
+      "page_loads": 7,
+      "tokens": 82888,
+      "steps": 7,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    },
+    {
+      "run_dir": "C:\\Users\\Sergiu\\Desktop\\Projects\\ai-operations-specialist\\Homework\\Session 4\\Browser_Agent_Price_Demo\\runs\\live\\20261012_111653_cmp3",
+      "seconds": 108.6,
+      "cost": 0.09151799999999999,
+      "model_calls": 7,
+      "page_loads": 7,
+      "tokens": 82749,
+      "steps": 7,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "violations": []
+    }
+  ],
+  "deterministic": [
+    {
+      "seconds": 1.35,
+      "requests": 2,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Cardioid Dynamic Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "errors": [
+        {
+          "site": "sweetwater.com",
+          "error": "skipped after earlier block: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.sweetwater.com/store/detail/SM58--shure-sm58-cardioid-dynamic-vocal-mi"
+        }
+      ]
+    },
+    {
+      "seconds": 1.63,
+      "requests": 2,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Cardioid Dynamic Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "errors": [
+        {
+          "site": "sweetwater.com",
+          "error": "skipped after earlier block: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.sweetwater.com/store/detail/SM58--shure-sm58-cardioid-dynamic-vocal-mi"
+        }
+      ]
+    },
+    {
+      "seconds": 1.39,
+      "requests": 2,
+      "success": false,
+      "fp": "[[\"alamomusic.com\", \"Shure SM58-LC Cardioid Dynamic Vocal Microphone\", 109.0, null, 109.0], [\"markertek.com\", \"Shure SM58-LC Handheld Dynamic Cardioid Microphone - Cable Not Included\", 109.0, 0.0, 109.0]]",
+      "score": {
+        "expected": 3,
+        "returned": 2,
+        "verified_ok": 2,
+        "success": false
+      },
+      "errors": [
+        {
+          "site": "sweetwater.com",
+          "error": "skipped after earlier block: HTTPStatusError: Client error '403 Forbidden' for url 'https://www.sweetwater.com/store/detail/SM58--shure-sm58-cardioid-dynamic-vocal-mi"
+        }
+      ]
+    }
+  ],
+  "A": {
+    "time_s": 135.4333333333333,
+    "cost": 0.132136,
+    "requests": "9 model calls + 8 page loads",
+    "success": "0/3",
+    "consistent": "2/3 identical",
+    "tokens": 106309.0
+  },
+  "D": {
+    "time_s": 1.4566666666666668,
+    "cost": 0.0,
+    "requests": "2 HTTP requests",
+    "success": "0/3",
+    "consistent": "3/3 identical"
+  }
+}

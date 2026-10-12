@@ -1,0 +1,28 @@
+[
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+    "agent_price": 54.23,
+    "agent_title": "Sapiens: A Brief History of Humankind",
+    "page_price": 54.23,
+    "page_title": "Sapiens: A Brief History of Humankind",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  },
+  {
+    "site": "books.toscrape.com",
+    "url": "https://books.toscrape.com/catalogue/sophies-world_966/index.html",
+    "agent_price": 15.94,
+    "agent_title": "Sophie's World",
+    "page_price": 15.94,
+    "page_title": "Sophie's World",
+    "source": "css:p.price_color",
+    "price_match": true,
+    "title_match": true,
+    "status": "OK",
+    "url_visited_by_agent": true
+  }
+]
