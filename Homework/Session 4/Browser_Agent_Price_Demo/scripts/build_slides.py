@@ -53,12 +53,22 @@ def base(prs, title, sub=None):
     return s
 
 
+def clip(t: str, n: int) -> str:
+    """Cut at a word boundary and add an ellipsis."""
+    t = (t or "").strip()
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0] + " ..."
+
+
 def pick_loop_step(steps):
     """A step whose action is a click/navigate with a following step, preferring one that shows a real product or catalogue page."""
-    for i, s in enumerate(steps[:-1]):
-        if s["action_names"][:1] in (["click"], ["navigate"]) and s.get("screenshot") and not s.get("screenshot_is_placeholder") and s["step"] > 3:
+    ok = lambda s: s.get("screenshot") and not s.get("screenshot_is_placeholder")
+    for i, s in enumerate(steps[:-1]):  # first choice: a real interaction (click/navigate/scroll/search) followed by another step
+        if s["action_names"][:1] in (["click"], ["navigate"], ["scroll"], ["search_page"]) and ok(s) and ok(steps[i + 1]) and s["step"] >= 2:
             return i
-    return 3
+    for i, s in enumerate(steps[:-1]):
+        if ok(s) and ok(steps[i + 1]) and s["action_names"][:1] != ["done"]:
+            return i
+    return 0
 
 
 def main():
@@ -88,10 +98,10 @@ def main():
                 pic.height = Inches(2.9)
             text(s, x + Inches(0.12), y0 + Inches(3.5), cw - Inches(0.24), Inches(1.7), cap if k == 0 else [cap, "Agent says: " + (b["evaluation"] or "")[:170]], 12, MUTE)
         elif k == 1:
-            text(s, x + Inches(0.12), y0 + Inches(0.55), cw - Inches(0.24), Inches(4.6), ["Goal:", a["next_goal"][:220], "", "Reasoning:", (a["thinking"] or "(none returned)")[:300]], 12, INK)
+            text(s, x + Inches(0.12), y0 + Inches(0.55), cw - Inches(0.24), Inches(4.6), ["Goal:", a["next_goal"][:220], "", "Reasoning:", clip(a["thinking"] or "(none returned)", 300)], 12, INK)
         else:
             acts = ", ".join(a["action_names"])
-            text(s, x + Inches(0.12), y0 + Inches(0.55), cw - Inches(0.24), Inches(4.6), [f"Action(s): {acts}", "", a["actions"][:260], "", f"Step took {a['duration']} s, {a['prompt_tokens'] + a['completion_tokens']:,} tokens"], 12, INK)
+            text(s, x + Inches(0.12), y0 + Inches(0.55), cw - Inches(0.24), Inches(4.6), [f"Action(s): {acts}", "", a["actions"][:260], "", (f"Step took {a['duration']} s, {a['prompt_tokens'] + a['completion_tokens']:,} tokens" if a["duration"] > 0 else "(timing for each step is in the report)")], 12, INK)
         if k < 3:
             ar = s.shapes.add_shape(MSO_SHAPE.RIGHT_ARROW, x + cw - Inches(0.02), y0 + Inches(2.4), gap + Inches(0.04), Inches(0.35))
             ar.fill.solid(); ar.fill.fore_color.rgb = ACC; ar.line.fill.background()
